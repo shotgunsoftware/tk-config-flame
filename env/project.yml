@@ -50,8 +50,10 @@ engines:
     groups:
     - matches: ['*Houdini*', '*Mari*', '*Max*', '*Maya*', '*Motion*', '*Nuke*', '*Photoshop*', '*Softimage*']
       name: Creative Tools
-    - matches: ['*Fla*', '*Hiero*']
+    - matches: ['*Hiero*']
       name: Editorial Tools
+    - matches: ['*Fla*']
+      name: Finishing Tools
     hook_launch_python: default
     location: {name: tk-desktop, type: app_store, version: v1.0.2}
     show_recents: true
