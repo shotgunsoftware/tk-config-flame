@@ -71,7 +71,7 @@ launch_flame_assist:
   location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
   mac_args: ''
   mac_path: 'flame_assist_mac'
-  menu_name: Launch Flame Assist
+  menu_name: Launch FlameAssist
   versions: []
   windows_args: ''
   windows_path: ''
