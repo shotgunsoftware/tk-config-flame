@@ -88,7 +88,7 @@ engines:
         clip_publish_type: Flame Open Clip
         batch_publish_type: Flame Batch File
     debug_logging: false
-    location: {name: tk-flame, type: app_store, version: v1.0.0}
+    location: {name: tk-flame, type: app_store, version: v1.0.1}
     project_startup_hook: '{self}/project_startup.py'
     flame_batch_publish_type: Flame Batch File
     backburner_shared_tmp: '/tmp'
