@@ -34,7 +34,7 @@ launch_3dsmax:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: ''
   menu_name: Launch 3DSMax
@@ -51,7 +51,7 @@ launch_flame:
   icon: '{target_engine}/flame_icon_256.png'
   linux_args: ''
   linux_path: '@flame_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: ''
   menu_name: Launch Flame
@@ -68,7 +68,7 @@ launch_flame_assist:
   icon: '{target_engine}/flame_assist_icon_256.png'
   linux_args: ''
   linux_path: '@flame_assist_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: '@flame_assist_mac'
   menu_name: Launch FlameAssist
@@ -85,7 +85,7 @@ launch_flare:
   icon: '{target_engine}/flare_icon_256.png'
   linux_args: ''
   linux_path: '@flare_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: '@flare_mac'
   menu_name: Launch Flare
@@ -102,7 +102,7 @@ launch_hiero:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@hiero_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: '@hiero_mac'
   menu_name: Launch Hiero
@@ -119,7 +119,7 @@ launch_houdini:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@houdini_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: ''
   menu_name: Launch Houdini
@@ -136,7 +136,7 @@ launch_mari:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@mari_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: '@mari_mac'
   menu_name: Launch Mari
@@ -153,7 +153,7 @@ launch_maya:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@maya_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: '@maya_mac'
   menu_name: Launch Maya
@@ -170,7 +170,7 @@ launch_motionbuilder:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: ''
   menu_name: Launch MotionBuilder
@@ -187,7 +187,7 @@ launch_nuke:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@nuke_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: '@nuke_mac'
   menu_name: Launch Nuke
@@ -204,7 +204,7 @@ launch_photoshop:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: '@photoshop_mac'
   menu_name: Launch Photoshop
@@ -229,7 +229,7 @@ launch_softimage:
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@softimage_linux'
-  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.0}
+  location: {name: tk-multi-launchapp, type: app_store, version: v0.5.2}
   mac_args: ''
   mac_path: ''
   menu_name: Launch Softimage
