@@ -36,7 +36,7 @@ std_flame_flare:
         name: 10 bit DPX
       - template: flame_shot_plate_exr
         publish_type: Flame Plate
-        name: 12 bit OpenEXR        
+        name: 16 bit OpenEXR        
       shot_clip_template: flame_shot_clip
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
