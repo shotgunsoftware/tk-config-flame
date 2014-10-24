@@ -14,7 +14,7 @@ description: Apps and Engines when launching with a project only context.
 #################################################################################################
 # include common definitions for all the launchers that are used to start maya, nuke etc.
 
-includes: [./includes/app_launchers.yml, ./includes/common_apps.yml]
+includes: [./includes/app_launchers.yml, ./includes/common_apps.yml, ./includes/flame.yml]
 
 
 #################################################################################################
@@ -34,7 +34,9 @@ engines:
     apps:
         tk-multi-launch3dsmax: '@launch_3dsmax'
         tk-multi-launchflame: '@launch_flame'
+        tk-multi-launchflare: '@launch_flare'
         tk-multi-launchflameassist: '@launch_flame_assist'
+        tk-multi-launchflamepremium: '@launch_flame_premium'
         tk-multi-launchhiero: '@launch_hiero'
         tk-multi-launchmari: '@launch_mari'
         tk-multi-launchmaya: '@launch_maya'
@@ -58,40 +60,9 @@ engines:
     location: {name: tk-desktop, type: app_store, version: v1.0.2}
     show_recents: true
 
+  tk-flame: '@std_flame_flare'
 
-  tk-flame:
-    apps:
-      tk-flame-review:
-        location: {name: tk-flame-review, type: app_store, version: v1.0.1}
-        task_template: ""
-        shotgun_entity_type: Sequence
-        menu_name: Submit for Shotgun review
-        settings_hook: '{self}/settings.py'
-      tk-flame-export:
-        location: {name: tk-flame-export, type: app_store, version: v1.0.1}
-        shot_parent_entity_type: Sequence
-        shot_parent_link_field: sg_sequence
-        shot_parent_task_template: ""
-        task_template: "Basic shot template"
-        menu_name: Shotgun Shot Export
-        settings_hook: '{self}/settings.py'
-        plate_presets:
-        - template: flame_shot_plate_dpx
-          publish_type: Flame Plate
-          name: 10 bit DPX
-        - template: flame_shot_plate_exr
-          publish_type: Flame Plate
-          name: 16 bit OpenEXR        
-        shot_clip_template: flame_shot_clip
-        segment_clip_template: flame_segment_clip
-        batch_template: flame_shot_batch
-        clip_publish_type: Flame Open Clip
-        batch_publish_type: Flame Batch File
-    debug_logging: false
-    location: {name: tk-flame, type: app_store, version: v1.0.2}
-    project_startup_hook: '{self}/project_startup.py'
-    flame_batch_publish_type: Flame Batch File
-    backburner_shared_tmp: '/tmp'
+  tk-flare: '@std_flame_flare'
 
   tk-hiero:
     apps:
@@ -266,7 +237,9 @@ engines:
       tk-multi-launch3dsmax: '@launch_3dsmax'
       tk-multi-launchhiero: '@launch_hiero'
       tk-multi-launchflame: '@launch_flame'
+      tk-multi-launchflare: '@launch_flare'
       tk-multi-launchflameassist: '@launch_flame_assist'
+      tk-multi-launchflamepremium: '@launch_flame_premium'
       tk-multi-launchmari: '@launch_mari'
       tk-multi-launchmaya: '@launch_maya'
       tk-multi-launchmotionbuilder: '@launch_motionbuilder'

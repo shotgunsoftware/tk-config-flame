@@ -80,6 +80,11 @@ hiero_linux: /usr/local/Hiero1.8v2/bin/Hiero1.8v2
 flame_linux: /usr/discreet/flame_2015.2/bin/startApplication
 
 #
+# Flame Premium
+#
+flame_premium_linux: /usr/discreet/flamepremium_2015.2/bin/startApplication
+
+#
 # Flame Assist
 #
 flame_assist_mac: /usr/discreet/flameassist_2015.2/bin/startApplication
