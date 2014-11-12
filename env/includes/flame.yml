@@ -17,13 +17,13 @@
 std_flame_flare:
   apps:
     tk-flame-review:
-      location: {name: tk-flame-review, type: app_store, version: v1.0.1}
+      location: {name: tk-flame-review, type: app_store, version: v1.0.2}
       task_template: ""
       shotgun_entity_type: Sequence
       menu_name: Submit for Shotgun review
       settings_hook: '{self}/settings.py'
     tk-flame-export:
-      location: {name: tk-flame-export, type: app_store, version: v1.0.1}
+      location: {name: tk-flame-export, type: app_store, version: v1.0.2}
       shot_parent_entity_type: Sequence
       shot_parent_link_field: sg_sequence
       shot_parent_task_template: ""
@@ -43,7 +43,7 @@ std_flame_flare:
       clip_publish_type: Flame Open Clip
       batch_publish_type: Flame Batch File
   debug_logging: false
-  location: {name: tk-flame, type: app_store, version: v1.0.2}
+  location: {name: tk-flame, type: app_store, version: v1.0.3}
   project_startup_hook: '{self}/project_startup.py'
   flame_batch_publish_type: Flame Batch File
   backburner_shared_tmp: '/tmp'
