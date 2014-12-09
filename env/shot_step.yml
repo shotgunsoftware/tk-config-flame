@@ -405,13 +405,13 @@ engines:
         allow_taskless_publishes: true
         display_name: Publish
         expand_single_items: false
-        hook_copy_file: default
-        hook_post_publish: default
-        hook_primary_pre_publish: default
-        hook_primary_publish: default
-        hook_scan_scene: default
-        hook_secondary_pre_publish: default
-        hook_secondary_publish: default
+        hook_copy_file: default        
+        hook_post_publish: '{config}/multi_publish/nuke/post_publish.py'
+        hook_primary_pre_publish: '{config}/multi_publish/nuke/primary_pre_publish.py'
+        hook_primary_publish: '{config}/multi_publish/nuke/primary_publish.py'
+        hook_scan_scene: '{config}/multi_publish/nuke/scan_scene.py'
+        hook_secondary_pre_publish: '{config}/multi_publish/nuke/secondary_pre_publish.py'
+        hook_secondary_publish: '{config}/multi_publish/nuke/secondary_publish.py'
         hook_thumbnail: default
         location: {name: tk-multi-publish, type: app_store, version: v0.6.2}
         primary_description: Publishes and versions up the current Nuke script.
@@ -429,6 +429,10 @@ engines:
             Write Nodes, display_name: Send to Screening Room, icon: icons/publish_nuke_review.png,
           name: quicktime, publish_template: null, required: false, scene_item_type: write_node,
           selected: true, tank_type: Quicktime}
+        - {description: Update Flame Version Metadata., display_group: Shotgun
+            Write Nodes, display_name: Update Flame, icon: icons/publish_nuke_flame.png,
+          name: flame, publish_template: null, required: false, scene_item_type: write_node,
+          selected: true, tank_type: null}
         template_work: nuke_shot_work
       tk-multi-reviewsubmission:
         location: {name: tk-multi-reviewsubmission, type: app_store, version: v0.1.9}
