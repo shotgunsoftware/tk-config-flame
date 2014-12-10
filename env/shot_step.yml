@@ -429,10 +429,10 @@ engines:
             Write Nodes, display_name: Send to Screening Room, icon: icons/publish_nuke_review.png,
           name: quicktime, publish_template: null, required: false, scene_item_type: write_node,
           selected: true, tank_type: Quicktime}
-        - {description: Update Flame Version Metadata., display_group: Shotgun
+        - {description: Adds this publish to the Flame version selector., display_group: Shotgun
             Write Nodes, display_name: Update Flame, icon: icons/publish_nuke_flame.png,
-          name: flame, publish_template: null, required: false, scene_item_type: write_node,
-          selected: true, tank_type: null}
+          name: flame, publish_template: flame_shot_clip, required: false, scene_item_type: write_node,
+          selected: true, tank_type: Flame Render }
         template_work: nuke_shot_work
       tk-multi-reviewsubmission:
         location: {name: tk-multi-reviewsubmission, type: app_store, version: v0.1.9}
