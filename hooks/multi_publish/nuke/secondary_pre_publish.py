@@ -10,6 +10,7 @@
 
 import os
 import nuke
+import xml.dom.minidom as minidom
 
 import tank
 from tank import Hook
@@ -105,6 +106,24 @@ class PrePublishHook(Hook):
                 if not self._get_render_task_for_task(tasks, task):
                     raise TankError("If you have the 'Send to Screening Room' box ticked, you "
                                     "must also have the 'Publish Renders' box ticked!")
+            
+            elif output["name"] == "flame":
+
+                # Make sure a 'Publish Renders' task is checked.
+                if not self._get_render_task_for_task(tasks, task):
+                    raise TankError("You need to publish your renders in order to send them to Flame!")
+                
+                # check that the clip file exists for this shot
+                clip_template = output["publish_template"]
+                clip_fields = self.parent.context.as_template_fields(clip_template)
+                clip_path = clip_template.apply_fields(clip_fields)
+                if not os.path.exists(clip_path):
+                    # cannot update non-existent clip xml file.
+                    raise TankError("Cannot find a clip file for this work area (expected it in " 
+                                    "'%s'). Please untick the flame checkbox and try again." % clip_path)
+                else:
+                    self.parent.log_debug("Successfully located clip file '%s' for context" % clip_path)
+                    
             
             else:
                 # don't know how to publish other output types!
