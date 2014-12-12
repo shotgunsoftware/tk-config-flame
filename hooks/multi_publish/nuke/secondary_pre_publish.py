@@ -10,7 +10,6 @@
 
 import os
 import nuke
-import xml.dom.minidom as minidom
 
 import tank
 from tank import Hook

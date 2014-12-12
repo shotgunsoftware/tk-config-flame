@@ -10,7 +10,12 @@
 
 import os
 import shutil
+import codecs
+import datetime
+import shutil
+import uuid
 import nuke
+import xml.dom.minidom as minidom
 
 import tank
 from tank import Hook
@@ -193,6 +198,35 @@ class PublishHook(Hook):
 
                     except Exception, e:
                         errors.append("Submit to Screening Room failed - %s" % e)
+
+                elif output_name == "flame":
+                    # Update the flame clip xml 
+    
+                    # each publish task is connected to a nuke write node
+                    # this value was populated via the scan scene hook
+                    write_node = task["item"].get("other_params", dict()).get("node")
+                    if not write_node:
+                        raise TankError("Could not determine nuke write node for item '%s'!" % str(task))
+
+                    # update shot clip xml file with this publish
+                    try:
+                        # compute the location of the clip file
+                        clip_template = task["output"]["publish_template"]
+                        clip_fields = self.parent.context.as_template_fields(clip_template)
+                        clip_path = clip_template.apply_fields(clip_fields)
+
+                        # pick up sg data from the render dict we are maintaining
+                        # note: we assume that the rendering tasks always happen
+                        # before the flame tasks inside the publish...
+                        (sg_publish, thumbnail_path) = render_publishes[ write_node.name() ]
+                        
+                        self._update_flame_clip(clip_path, write_node, sg_publish, progress_cb)
+
+                    except Exception, e:
+                        errors.append("Could not update flame clip xml: %s" % e)
+                        # log the full call stack in addition to showing the error in the UI.
+                        self.parent.log_exception("Could not update flame clip xml!")
+
                         
                 else:
                     # unhandled output type!
@@ -376,8 +410,331 @@ class PublishHook(Hook):
         return sg_data
         
 
+    def _generate_flame_clip_name(self, publish_fields):
+        """
+        Generates a name which will be displayed in the dropdown in flame.
+        
+        :param publish_fields: Publish fields
+        """
+        
+        # the shot will already be implied by the clip inside flame (the clip file
+        # which we are updating is a per-shot file. But if the context contains a task
+        # or a step, we can display that
+        name = ""
+        
+        if self.parent.context.task:
+            name += "%s, " % self.parent.context.task["name"].capitalize()
+        elif self.parent.context.step:
+            name += "%s, " % self.parent.context.task["name"].capitalize()
+        
+        # if we have a channel set for the write node
+        # or a name for the scene, add those
+        rp_name = publish_fields.get("name")
+        rp_channel = publish_fields.get("channel")
+        
+        if rp_name and rp_channel:
+            name += "Nuke file %s.nk (output %s), " % (rp_name, rp_channel)
+        elif not rp_name:
+            name += "Nuke output %s, " % rp_channel
+        elif not rp_channel:
+            name += "Nuke file %s.nk, " % rp_name
+        
+        # and finish with version number
+        name += "v%03d" % (publish_fields.get("version") or 0)
+        
+        return name
+
+    def _update_flame_clip(self, clip_path, write_node, sg_publish, progress_cb):
+        """
+        Update the flame open clip file for this shot with the published render.
+        
+        For docs, see:
+        http://knowledge.autodesk.com/support/flame-products/troubleshooting/caas/sfdcarticles/sfdcarticles/Creating-clip-Open-Clip-files-from-multi-EXR-assets.html
+        http://docs.autodesk.com/flamepremium2015/index.html?url=files/GUID-1A051CEB-429B-413C-B6CA-256F4BB5D254.htm,topicNumber=d30e45343
+        
+        An example XML file would look something like this:
+        
+        <?xml version="1.0" encoding="UTF-8"?>
+        <clip type="clip" version="4">
+            <handler type="handler">
+                ...
+            </handler>
+            <name type="string">mi001</name>
+            <sourceName type="string">F004_C003_0228F8</sourceName>
+            <userData type="dict">
+                ...
+            </userData>
+            <tracks type="tracks">
+                <track type="track" uid="video">
+                    <trackType>video</trackType>
+                    <dropMode type="string">NDF</dropMode>
+                    <duration type="time" label="00:00:07+02">
+                        <rate type="rate">
+                            <numerator>24000</numerator>
+                            <denominator>1001</denominator>
+                        </rate>
+                        <nbTicks>170</nbTicks>
+                        <dropMode>NDF</dropMode>
+                    </duration>
+                    <name type="string">mi001</name>
+                    <userData type="dict">
+                        <GATEWAY_NODE_ID type="binary">/mnt/projects/arizona_adventure/sequences/Mirage/mi001/editorial/flame/mi001.clip@TRACK(5)video</GATEWAY_NODE_ID>
+                        <GATEWAY_SERVER_ID type="binary">10.0.1.8:Gateway</GATEWAY_SERVER_ID>
+                        <GATEWAY_SERVER_NAME type="string">xxx</GATEWAY_SERVER_NAME>
+                    </userData>
+                    <feeds currentVersion="v002">
+        
+                        <feed type="feed" vuid="v000" uid="5E21801C-41C2-4B47-90B6-C1E25235F032">
+                            <storageFormat type="format">
+                                <type>video</type>
+                                <channelsDepth type="uint">10</channelsDepth>
+                                <channelsEncoding type="string">Integer</channelsEncoding>
+                                <channelsEndianess type="string">Big Endian</channelsEndianess>
+                                <fieldDominance type="int">2</fieldDominance>
+                                <height type="uint">1080</height>
+                                <nbChannels type="uint">3</nbChannels>
+                                <pixelLayout type="string">RGB</pixelLayout>
+                                <pixelRatio type="float">1</pixelRatio>
+                                <width type="uint">1920</width>
+                            </storageFormat>
+                            <sampleRate type="rate" version="4">
+                                <numerator>24000</numerator>
+                                <denominator>1001</denominator>
+                            </sampleRate>
+                            <spans type="spans" version="4">
+                                <span type="span" version="4">
+                                    <duration>170</duration>
+                                    <path encoding="pattern">/mnt/projects/arizona_adventure/sequences/Mirage/mi001/editorial/dpx_plates/v000/F004_C003_0228F8/F004_C003_0228F8_mi001.v000.[0100-0269].dpx</path>
+                                </span>
+                            </spans>
+                        </feed>
+                        <feed type="feed" vuid="v001" uid="DA62F3A2-BA3B-4939-8089-EC7FC602AC74">
+                            <storageFormat type="format">
+                                <type>video</type>
+                                <channelsDepth type="uint">10</channelsDepth>
+                                <channelsEncoding type="string">Integer</channelsEncoding>
+                                <channelsEndianess type="string">Little Endian</channelsEndianess>
+                                <fieldDominance type="int">2</fieldDominance>
+                                <height type="uint">1080</height>
+                                <nbChannels type="uint">3</nbChannels>
+                                <pixelLayout type="string">RGB</pixelLayout>
+                                <pixelRatio type="float">1</pixelRatio>
+                                <rowOrdering type="string">down</rowOrdering>
+                                <width type="uint">1920</width>
+                            </storageFormat>
+                            <userData type="dict">
+                                <recordTimecode type="time" label="00:00:00+00">
+                                    <rate type="rate">24</rate>
+                                    <nbTicks>0</nbTicks>
+                                    <dropMode>NDF</dropMode>
+                                </recordTimecode>
+                            </userData>
+                            <sampleRate type="rate" version="4">
+                                <numerator>24000</numerator>
+                                <denominator>1001</denominator>
+                            </sampleRate>
+                            <startTimecode type="time">
+                                <rate type="rate">24</rate>
+                                <nbTicks>1391414</nbTicks>
+                                <dropMode>NDF</dropMode>
+                            </startTimecode>
+                            <spans type="spans" version="4">
+                                <span type="span" version="4">
+                                    <path encoding="pattern">/mnt/projects/arizona_adventure/sequences/Mirage/mi001/editorial/dpx_plates/v001/F004_C003_0228F8/F004_C003_0228F8_mi001.v001.[0100-0269].dpx</path>
+                                </span>
+                            </spans>
+                        </feed>
+                    </feeds>
+                </track>
+            </tracks>
+            <versions type="versions" currentVersion="v002">
+                <version type="version" uid="v000">
+                    <name>v000</name>
+                    <creationDate>2014/12/09 22:22:48</creationDate>
+                    <userData type="dict">
+                        <batchSetup type="binary">/mnt/projects/arizona_adventure/sequences/Mirage/mi001/editorial/flame/batch/mi001.v000.batch</batchSetup>
+                        <versionNumber type="uint64">0</versionNumber>
+                    </userData>
+                </version>
+                <version type="version" uid="v001">
+                    <name>v001</name>
+                    <creationDate>2014/12/09 22:30:04</creationDate>
+                    <userData type="dict">
+                        <batchSetup type="binary">/mnt/projects/arizona_adventure/sequences/Mirage/mi001/editorial/flame/batch/mi001.v001.batch</batchSetup>
+                        <versionNumber type="uint64">1</versionNumber>
+                    </userData>
+                </version>
+            </versions>
+        </clip>
+        
+        
+        When this file is updated, a new <version> tag and a new <feed> tag is inserted:
+        
+        <feed type="feed" vuid="v002" uid="DA62F3A2-BA3B-4939-8089-EC7FC603AC74">
+            <spans type="spans" version="4">
+                <span type="span" version="4">
+                    <path encoding="pattern">/nuke/publish/path/mi001_scene_output_v001.[0100-0150].dpx</path>
+                </span>
+            </spans>
+        </feed>
+
+        <version type="version" uid="v002">
+            <name>v002 - Shotgun export from Nuke - Yeah Baby!</name>
+            <creationDate>2014/12/09 22:30:04</creationDate>
+            <userData type="dict">
+            </userData>
+        </version>
+
+        
+        :param clip_path: path to the clip xml file to add the publish to
+        :param write_node: current write node object
+        :param sg_publish: shotgun publish 
+        :param progress_cb: progress callback
+        """
+        
+        progress_cb(1, "Updating flame clip file...")
+        
+        # get the fields from the work file
+        render_path = self.__write_node_app.get_node_render_path(write_node)
+        render_template = self.__write_node_app.get_node_render_template(write_node)
+        render_path_fields = render_template.get_fields(render_path)
+        publish_template = self.__write_node_app.get_node_publish_template(write_node)
+        
+        # append extra fields needed by the publish template 
+        tank_type = self.__write_node_app.get_node_tank_type(write_node)
+        render_path_fields["TankType"] = tank_type
+        
+        # set up the sequence token to be flame friendly
+        # e.g. mi001_scene_output_v001.[0100-0150].dpx
+        # note - we cannot take the frame ranges from the write node - 
+        # because those values indicate the intended frame range rather
+        # than the rendered frame range! In order for flame to pick up 
+        # the media properly, it needs to contain the actual frame data 
+        
+        # get all paths for all frames and all eyes
+        paths = self.parent.sgtk.paths_from_template(publish_template, render_path_fields, skip_keys = ["SEQ", "eye"])
+        
+        # for each of them, extract the frame number. Track the min and the max
+        min_frame = None
+        max_frame = None
+        for path in paths:
+            fields = publish_template.get_fields(path)
+            frame_number = fields["SEQ"]
+            if min_frame is None or frame_number < min_frame:
+                min_frame = frame_number
+            if max_frame is None or frame_number > max_frame:
+                max_frame = frame_number
+        
+        if min_frame is None or max_frame is None:
+            # shouldn't really end up here - the validation checks that
+            # stuff has actually been rendered.
+            raise TankError("Couldn't extract min and max frame from the published sequence! "
+                            "Will not update Flame clip xml.")
+        
+        # now when we have the real min/max frame, we can apply a proper sequence marker for the
+        # flame xml
+        render_path_fields["SEQ"] = "[%04d-%04d]" % (min_frame, max_frame) 
+        
+        # contruct the final path             
+        publish_path_flame = publish_template.apply_fields(render_path_fields)
+        
+        # open up and update our xml file        
+        xml = minidom.parse(clip_path)
+
+        # find first <track type="track" uid="video">
+        first_video_track = None
+        for track in xml.getElementsByTagName("track"):
+            if track.attributes["uid"].value == "video":
+                first_video_track = track
+                break
+            
+        if first_video_track is None:
+            raise TankError("Could not find <track type='track' uid='video'> in clip file!")
+
+        # now contruct our feed xml chunk we want to insert
+        unique_id = str(uuid.uuid4())
+        
+        # <feed type="feed" vuid="%s" uid="%s">
+        #     <spans type="spans" version="4">
+        #         <span type="span" version="4">
+        #             <path encoding="pattern">%s</path>
+        #         </span>
+        #     </spans>
+        # </feed>
+
+        # <feed type="feed" vuid="%s" uid="%s">
+        feed_node = xml.createElement("feed")
+        feed_node.setAttribute("type", "feed")
+        feed_node.setAttribute("uid", unique_id)
+        feed_node.setAttribute("vuid", unique_id)
+        
+        # <spans type="spans" version="4">
+        spans_node = xml.createElement("spans")
+        spans_node.setAttribute("type", "spans")
+        spans_node.setAttribute("version", "4")
+        feed_node.appendChild(spans_node)
+        
+        # <span type="span" version="4">
+        span_node = xml.createElement("span")
+        span_node.setAttribute("type", "span")
+        span_node.setAttribute("version", "4")
+        spans_node.appendChild(span_node)
+
+        # <path encoding="pattern">%s</path>
+        path_node = xml.createElement("path")
+        path_node.setAttribute("encoding", "pattern")
+        path_node.appendChild(xml.createTextNode(publish_path_flame))
+        span_node.appendChild(path_node)
+
+        # add new feed to first list of feeds inside of our track
+        track.getElementsByTagName("feeds")[0].appendChild(feed_node)
 
 
+        # <version type="version" uid="%s">
+        #     <name>%s</name>
+        #     <creationDate>%s</creationDate>
+        #     <userData type="dict">
+        #     </userData>
+        # </version>
+
+        # now add same to the versions structure
+        date_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        formatted_name = self._generate_flame_clip_name(render_path_fields)
+
+        # <version type="version" uid="%s">
+        version_node = xml.createElement("version")
+        version_node.setAttribute("type", "version")
+        version_node.setAttribute("uid", unique_id)
+        
+        # <name>v003 Comp</name>
+        child_node = xml.createElement("name")
+        child_node.appendChild(xml.createTextNode(formatted_name))
+        version_node.appendChild(child_node)
+        
+        # <creationDate>1229-12-12 12:12:12</creationDate>
+        child_node = xml.createElement("creationDate")
+        child_node.appendChild(xml.createTextNode(date_str))
+        version_node.appendChild(child_node)
+        
+        # <userData type="dict">
+        child_node = xml.createElement("userData")
+        child_node.setAttribute("type", "dict")
+        version_node.appendChild(child_node)
+        
+        # add new feed to first list of versions
+        xml.getElementsByTagName("versions")[0].appendChild(version_node)        
+        xml_string = xml.toxml(encoding="UTF-8")
+        
+        # make a backup
+        backup_path = "%s.bak_%s" % (clip_path, datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
+        shutil.copy(clip_path, backup_path)
+
+        fh = open(clip_path, "wt")
+        try:
+            fh.write(xml_string)
+        finally:
+            fh.close()
 
 
+        
 
