@@ -415,17 +415,26 @@ class PublishHook(Hook):
         Generates a name which will be displayed in the dropdown in flame.
         
         :param publish_fields: Publish fields
+        :returns: name string 
         """
+        
+        # this implementation generates names on the following form:
+        #
+        # Comp, scene.nk (output background), v023
+        # Comp, v023
+        # Lighting CBBs, final.nk, v034
+        #
+        # (depending on what pieces are available in context and names, names may vary)
+        
+        name = ""
         
         # the shot will already be implied by the clip inside flame (the clip file
         # which we are updating is a per-shot file. But if the context contains a task
-        # or a step, we can display that
-        name = ""
-        
+        # or a step, we can display that:
         if self.parent.context.task:
             name += "%s, " % self.parent.context.task["name"].capitalize()
         elif self.parent.context.step:
-            name += "%s, " % self.parent.context.task["name"].capitalize()
+            name += "%s, " % self.parent.context.step["name"].capitalize()
         
         # if we have a channel set for the write node
         # or a name for the scene, add those
@@ -448,7 +457,10 @@ class PublishHook(Hook):
         """
         Update the flame open clip file for this shot with the published render.
         
-        For docs, see:
+        When a shot has been exported from flame, a clip file is available for each shot.
+        We load that up, parse the xml and add a new entry to it.
+        
+        For docs on the clip format, see:
         http://knowledge.autodesk.com/support/flame-products/troubleshooting/caas/sfdcarticles/sfdcarticles/Creating-clip-Open-Clip-files-from-multi-EXR-assets.html
         http://docs.autodesk.com/flamepremium2015/index.html?url=files/GUID-1A051CEB-429B-413C-B6CA-256F4BB5D254.htm,topicNumber=d30e45343
         
@@ -725,7 +737,7 @@ class PublishHook(Hook):
         xml.getElementsByTagName("versions")[0].appendChild(version_node)        
         xml_string = xml.toxml(encoding="UTF-8")
         
-        # make a backup
+        # make a backup of the clip file before we update it
         backup_path = "%s.bak_%s" % (clip_path, datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
         shutil.copy(clip_path, backup_path)
 
@@ -734,4 +746,4 @@ class PublishHook(Hook):
             fh.write(xml_string)
         finally:
             fh.close()
-
+        
