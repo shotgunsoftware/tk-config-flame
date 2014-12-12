@@ -433,11 +433,11 @@ class PublishHook(Hook):
         rp_channel = publish_fields.get("channel")
         
         if rp_name and rp_channel:
-            name += "Nuke file %s.nk (output %s), " % (rp_name, rp_channel)
+            name += "%s.nk (output %s), " % (rp_name, rp_channel)
         elif not rp_name:
             name += "Nuke output %s, " % rp_channel
         elif not rp_channel:
-            name += "Nuke file %s.nk, " % rp_name
+            name += "%s.nk, " % rp_name
         
         # and finish with version number
         name += "v%03d" % (publish_fields.get("version") or 0)
@@ -734,7 +734,4 @@ class PublishHook(Hook):
             fh.write(xml_string)
         finally:
             fh.close()
-
-
-        
 
