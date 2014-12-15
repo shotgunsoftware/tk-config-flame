@@ -421,7 +421,7 @@ class PublishHook(Hook):
         # this implementation generates names on the following form:
         #
         # Comp, scene.nk (output background), v023
-        # Comp, v023
+        # Comp, Nuke, v023
         # Lighting CBBs, final.nk, v034
         #
         # (depending on what pieces are available in context and names, names may vary)
@@ -447,6 +447,8 @@ class PublishHook(Hook):
             name += "Nuke output %s, " % rp_channel
         elif not rp_channel:
             name += "%s.nk, " % rp_name
+        else:
+            name += "Nuke, "
         
         # and finish with version number
         name += "v%03d" % (publish_fields.get("version") or 0)
