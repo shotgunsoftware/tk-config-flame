@@ -41,7 +41,7 @@ std_flame_flare:
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
       batch_publish_type: Flame Batch File
-  debug_logging: true
+  debug_logging: false
   location: {name: tk-flame, type: app_store, version: v1.0.5}
   project_startup_hook: '{self}/project_startup.py'
   flame_batch_publish_type: Flame Batch File
