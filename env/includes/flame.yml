@@ -42,7 +42,7 @@ std_flame_flare:
       batch_template: flame_shot_batch
       batch_publish_type: Flame Batch File
   debug_logging: false
-  location: {name: tk-flame, type: app_store, version: v1.0.5}
+  location: {name: tk-flame, type: app_store, version: v1.0.6}
   project_startup_hook: '{self}/project_startup.py'
   flame_batch_publish_type: Flame Batch File
   backburner_shared_tmp: '/tmp'
