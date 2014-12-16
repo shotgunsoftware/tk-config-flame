@@ -118,8 +118,9 @@ class PrePublishHook(Hook):
                 clip_path = clip_template.apply_fields(clip_fields)
                 if not os.path.exists(clip_path):
                     # cannot update non-existent clip xml file.
-                    raise TankError("Cannot find a clip file for this work area (expected it in " 
-                                    "'%s'). Please untick the flame checkbox and try again." % clip_path)
+                    raise TankError("Cannot find a Flame clip file for this Shot (expected it in " 
+                                    "'%s'). This is most likely because this shot wasn't created using the "
+                                    "Flame Shot Export. Please untick the Flame checkbox and try again." % clip_path)
                 else:
                     self.parent.log_debug("Successfully located clip file '%s' for context" % clip_path)
                     
