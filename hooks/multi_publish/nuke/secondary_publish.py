@@ -466,7 +466,25 @@ class PublishHook(Hook):
         http://knowledge.autodesk.com/support/flame-products/troubleshooting/caas/sfdcarticles/sfdcarticles/Creating-clip-Open-Clip-files-from-multi-EXR-assets.html
         http://docs.autodesk.com/flamepremium2015/index.html?url=files/GUID-1A051CEB-429B-413C-B6CA-256F4BB5D254.htm,topicNumber=d30e45343
         
-        An example XML file would look something like this:
+        
+        When the clip file is updated, a new <version> tag and a new <feed> tag are inserted:
+        
+        <feed type="feed" vuid="v002" uid="DA62F3A2-BA3B-4939-8089-EC7FC603AC74">
+            <spans type="spans" version="4">
+                <span type="span" version="4">
+                    <path encoding="pattern">/nuke/publish/path/mi001_scene_output_v001.[0100-0150].dpx</path>
+                </span>
+            </spans>
+        </feed>
+
+        <version type="version" uid="v002">
+            <name>Comp, scene.nk, v003</name>
+            <creationDate>2014/12/09 22:30:04</creationDate>
+            <userData type="dict">
+            </userData>
+        </version>
+        
+        An example clip XML file would look something like this:
         
         <?xml version="1.0" encoding="UTF-8"?>
         <clip type="clip" version="4">
@@ -580,26 +598,7 @@ class PublishHook(Hook):
                 </version>
             </versions>
         </clip>
-        
-        
-        When this file is updated, a new <version> tag and a new <feed> tag is inserted:
-        
-        <feed type="feed" vuid="v002" uid="DA62F3A2-BA3B-4939-8089-EC7FC603AC74">
-            <spans type="spans" version="4">
-                <span type="span" version="4">
-                    <path encoding="pattern">/nuke/publish/path/mi001_scene_output_v001.[0100-0150].dpx</path>
-                </span>
-            </spans>
-        </feed>
-
-        <version type="version" uid="v002">
-            <name>v002 - Shotgun export from Nuke - Yeah Baby!</name>
-            <creationDate>2014/12/09 22:30:04</creationDate>
-            <userData type="dict">
-            </userData>
-        </version>
-
-        
+                
         :param clip_path: path to the clip xml file to add the publish to
         :param write_node: current write node object
         :param sg_publish: shotgun publish 
@@ -666,8 +665,9 @@ class PublishHook(Hook):
             raise TankError("Could not find <track type='track' uid='video'> in clip file!")
 
         # now contruct our feed xml chunk we want to insert
-        unique_id = str(uuid.uuid4())
-        
+        #
+        # this is the xml structure we want to insert:
+        #
         # <feed type="feed" vuid="%s" uid="%s">
         #     <spans type="spans" version="4">
         #         <span type="span" version="4">
@@ -675,6 +675,7 @@ class PublishHook(Hook):
         #         </span>
         #     </spans>
         # </feed>
+        unique_id = str(uuid.uuid4())
 
         # <feed type="feed" vuid="%s" uid="%s">
         feed_node = xml.createElement("feed")
@@ -704,14 +705,14 @@ class PublishHook(Hook):
         track.getElementsByTagName("feeds")[0].appendChild(feed_node)
 
 
+        # now add same to the versions structure
+        #
         # <version type="version" uid="%s">
         #     <name>%s</name>
         #     <creationDate>%s</creationDate>
         #     <userData type="dict">
         #     </userData>
         # </version>
-
-        # now add same to the versions structure
         date_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         formatted_name = self._generate_flame_clip_name(render_path_fields)
 
@@ -740,8 +741,17 @@ class PublishHook(Hook):
         xml_string = xml.toxml(encoding="UTF-8")
         
         # make a backup of the clip file before we update it
+        #
+        # note - we are not using the template system here for simplicity
+        # (user requiring customization can always modify this hook code themselves).
+        # There is a potential edge case where the backup file cannot be written at this point
+        # because you are on a different machine or running with different permissions.
+        #
         backup_path = "%s.bak_%s" % (clip_path, datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
-        shutil.copy(clip_path, backup_path)
+        try:
+            shutil.copy(clip_path, backup_path)
+        except Exception, e:
+            raise TankError("Could not create backup copy of the flame clip file '%s': %s" % (clip_path, e))
 
         fh = open(clip_path, "wt")
         try:
