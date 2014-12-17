@@ -645,8 +645,16 @@ class PublishHook(Hook):
                             "Will not update Flame clip xml.")
         
         # now when we have the real min/max frame, we can apply a proper sequence marker for the
-        # flame xml
-        render_path_fields["SEQ"] = "[%04d-%04d]" % (min_frame, max_frame) 
+        # flame xml. Note that we cannot use the normal FORMAT: token in the template system, because
+        # the flame frame format is not totally "abstract" (e.g. %04d, ####, etc) but contains the frame
+        # ranges themselves.
+        #
+        # the format spec is something like "04"
+        sequence_key = publish_template.keys["SEQ"]
+        # now compose the format string, eg. [%04d-%04d]
+        format_str = "[%%%sd-%%%sd]" % (sequence_key.format_spec, sequence_key.format_spec) 
+        # and lastly plug in the values
+        render_path_fields["SEQ"] = format_str % (min_frame, max_frame) 
         
         # contruct the final path             
         publish_path_flame = publish_template.apply_fields(render_path_fields)
