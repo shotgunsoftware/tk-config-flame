@@ -31,11 +31,11 @@ std_flame_flare:
       menu_name: Shotgun Shot Export
       settings_hook: '{self}/settings.py'
       plate_presets:
-      - template: flame_shot_plate_dpx
-        publish_type: Flame Plate
+      - template: flame_shot_render_dpx
+        publish_type: Flame Render
         name: 10 bit DPX
-      - template: flame_shot_plate_exr
-        publish_type: Flame Plate
+      - template: flame_shot_render_exr
+        publish_type: Flame Render
         name: 16 bit OpenEXR
       shot_clip_template: flame_shot_clip
       segment_clip_template: flame_segment_clip

@@ -376,7 +376,7 @@ engines:
         action_mappings:
           Nuke Script: [script_import]
           Rendered Image: [read_node]
-          Flame Plate: [read_node]
+          Flame Render: [read_node]
         actions_hook: '{self}/tk-nuke_actions.py'
         download_thumbnails: true
         entities:
