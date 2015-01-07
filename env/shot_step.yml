@@ -375,13 +375,13 @@ engines:
         action_mappings:
           Nuke Script: [script_import]
           Rendered Image: [read_node]
-          Flame Plate: [read_node]
+          Flame Render: [read_node]
         actions_hook: '{self}/tk-nuke_actions.py'
         download_thumbnails: true
         entities:
         - caption: Assets
           entity_type: Asset
-          filters:
+          filters: 
           - [project, is, '{context.project}']
           hierarchy: [sg_asset_type, code]
         - caption: Shots
@@ -404,13 +404,13 @@ engines:
         allow_taskless_publishes: true
         display_name: Publish
         expand_single_items: false
-        hook_copy_file: default
+        hook_copy_file: default        
         hook_post_publish: default
         hook_primary_pre_publish: default
         hook_primary_publish: default
         hook_scan_scene: default
-        hook_secondary_pre_publish: default
-        hook_secondary_publish: default
+        hook_secondary_pre_publish: '{config}/multi_publish/nuke/secondary_pre_publish.py'
+        hook_secondary_publish: '{config}/multi_publish/nuke/secondary_publish.py'
         hook_thumbnail: default
         location: {name: tk-multi-publish, type: app_store, version: v0.6.2}
         primary_description: Publishes and versions up the current Nuke script.
@@ -420,7 +420,7 @@ engines:
         primary_scene_item_type: work_file
         primary_tank_type: Nuke Script
         secondary_outputs:
-        - {description: Copies renders from work area to publish area., display_group: Shotgun
+        - {description: Copy renders from work area to publish area., display_group: Shotgun
             Write Nodes, display_name: Publish Renders, icon: icons/publish_nuke_writenode.png,
           name: render, publish_template: null, required: false, scene_item_type: write_node,
           selected: true, tank_type: Rendered Image}
@@ -428,6 +428,10 @@ engines:
             Write Nodes, display_name: Send to Screening Room, icon: icons/publish_nuke_review.png,
           name: quicktime, publish_template: null, required: false, scene_item_type: write_node,
           selected: true, tank_type: Quicktime}
+        - {description: Make this publish available in Flame., display_group: Shotgun
+            Write Nodes, display_name: Update Flame, icon: icons/publish_nuke_flame.png,
+          name: flame, publish_template: flame_shot_clip, required: false, scene_item_type: write_node,
+          selected: true, tank_type: unused }
         template_work: nuke_shot_work
       tk-multi-reviewsubmission:
         location: {name: tk-multi-reviewsubmission, type: app_store, version: v0.1.9}

@@ -31,21 +31,18 @@ std_flame_flare:
       menu_name: Shotgun Shot Export
       settings_hook: '{self}/settings.py'
       plate_presets:
-      - template: flame_shot_plate_dpx
-        publish_type: Flame Plate
+      - template: flame_shot_render_dpx
+        publish_type: Flame Render
         name: 10 bit DPX
-      - template: flame_shot_plate_exr
-        publish_type: Flame Plate
-        name: 16 bit OpenEXR        
+      - template: flame_shot_render_exr
+        publish_type: Flame Render
+        name: 16 bit OpenEXR
       shot_clip_template: flame_shot_clip
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
-      clip_publish_type: Flame Open Clip
       batch_publish_type: Flame Batch File
   debug_logging: false
-  location: {name: tk-flame, type: app_store, version: v1.0.5}
+  location: {name: tk-flame, type: app_store, version: v1.0.6}
   project_startup_hook: '{self}/project_startup.py'
   flame_batch_publish_type: Flame Batch File
   backburner_shared_tmp: '/tmp'
-
-  
