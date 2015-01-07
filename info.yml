@@ -11,8 +11,8 @@
 # Metadata defining the behaviour and requirements for this configuration
 
 # More verbose description of this item 
-display_name: "Default Config w/Flame"
-description: "A VFX Example Config and our default configuration."
+display_name: "Default Config with Flame"
+description: "This is the same as the Default configuration but also includes the Flame integration and a round-trip workflow between Flame and Nuke."
 
 # Required minimum versions for this item to run
 requires_shotgun_version: "v4.3.9"
