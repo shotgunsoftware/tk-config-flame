@@ -30,6 +30,16 @@ engines:
     debug_logging: false
     location: {name: tk-3dsmax, type: app_store, version: v0.3.2}
 
+  tk-3dsmaxplus:
+    apps:
+      tk-multi-about: '@about'
+      tk-multi-screeningroom: '@launch_screeningroom'
+      tk-multi-workfiles: '@workfiles'
+    compatibility_dialog_min_version: 2016
+    debug_logging: false
+    menu_favourites: []
+    location: {name: tk-3dsmaxplus, type: app_store, version: v0.1.5}
+
   tk-desktop:
     apps:
         tk-multi-launch3dsmax: '@launch_3dsmax'
@@ -76,6 +86,8 @@ engines:
         hook_translate_template: default
         hook_update_version_data: default
         hook_upload_thumbnail: default
+        hook_get_extra_publish_data: default
+        hook_pre_export: default        
         location: {name: tk-hiero-export, type: app_store, version: v0.1.22}
         nuke_script_published_file_type: Nuke Script
         nuke_script_toolkit_write_nodes:
@@ -83,6 +95,7 @@ engines:
         - {channel: stereoexr16, name: 'Stereo Exr, 16 bit'}
         - {channel: monodpx, name: Mono Dpx}
         plate_published_file_type: Hiero Plate
+        audio_published_file_type: Hiero Audio
         template_nuke_script_path: nuke_shot_work
         template_plate_path: hiero_plate_path
         template_render_path: hiero_render_path
