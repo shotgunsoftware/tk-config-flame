@@ -23,7 +23,7 @@ std_flame_flare:
       menu_name: Submit for Shotgun review
       settings_hook: '{self}/settings.py'
     tk-flame-export:
-      location: {name: tk-flame-export, type: app_store, version: v1.1.0}
+      location: {name: tk-flame-export, type: app_store, version: v1.2.1}
       shot_parent_entity_type: Sequence
       shot_parent_link_field: sg_sequence
       shot_parent_task_template: ""
