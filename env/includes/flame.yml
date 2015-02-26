@@ -23,20 +23,29 @@ std_flame_flare:
       menu_name: Submit for Shotgun review
       settings_hook: '{self}/settings.py'
     tk-flame-export:
-      location: {name: tk-flame-export, type: app_store, version: v1.2.1}
+      location: {name: tk-flame-export, type: app_store, version: v1.3.0}
       shot_parent_entity_type: Sequence
       shot_parent_link_field: sg_sequence
       shot_parent_task_template: ""
       task_template: "Basic shot template"
       menu_name: Shotgun Shot Export
       settings_hook: '{self}/settings.py'
+      bypass_shotgun_transcoding: false
       plate_presets:
       - template: flame_shot_render_dpx
         publish_type: Flame Render
         name: 10 bit DPX
+        upload_quicktime: true
+        force_copy: false
+        quicktime_publish_type: Flame Quicktime
+        quicktime_template: null
       - template: flame_shot_render_exr
         publish_type: Flame Render
         name: 16 bit OpenEXR
+        upload_quicktime: true
+        force_copy: false
+        quicktime_publish_type: Flame Quicktime
+        quicktime_template: null        
       shot_clip_template: flame_shot_clip
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
