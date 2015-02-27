@@ -156,13 +156,13 @@ paths:
     #
     # Flame
     #
-    
+
     flame_segment_clip:      'sequences/{Sequence}/{Shot}/finishing/clip/sources/{segment_name}.clip'
     flame_shot_clip:         'sequences/{Sequence}/{Shot}/finishing/clip/{Shot}.clip'
     flame_shot_batch:        'sequences/{Sequence}/{Shot}/finishing/batch/{Shot}.v{version}.batch'
-    flame_shot_render_dpx:   'sequences/{Sequence}/{Shot}/finishing/renders/v{version}/{segment_name}/{segment_name}_{Shot}.v{version}.{SEQ}.dpx'
-    flame_shot_render_exr:   'sequences/{Sequence}/{Shot}/finishing/renders/v{version}/{segment_name}/{segment_name}_{Shot}.v{version}.{SEQ}.exr'
-    flame_shot_quicktime:    'sequences/{Sequence}/{Shot}/Finishing/renders/v{version}/{segment_name}_{Shot}.v{version}.mov'    
+    flame_shot_render_dpx:   'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
+    flame_shot_render_exr:   'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
+    flame_shot_quicktime:    'sequences/{Sequence}/{Shot}/Finishing/renders/{segment_name}_v{version}.mov'
 
     #
     # Photoshop
