@@ -200,7 +200,7 @@ class PublishHook(Hook):
                         errors.append("Submit to Screening Room failed - %s" % e)
 
                 elif output_name == "flame":
-                    # Update the flame clip xml 
+                    # Update the Flame clip xml 
     
                     # each publish task is connected to a nuke write node
                     # this value was populated via the scan scene hook
@@ -217,15 +217,15 @@ class PublishHook(Hook):
 
                         # pick up sg data from the render dict we are maintaining
                         # note: we assume that the rendering tasks always happen
-                        # before the flame tasks inside the publish...
+                        # before the Flame tasks inside the publish...
                         (sg_publish, thumbnail_path) = render_publishes[ write_node.name() ]
                         
                         self._update_flame_clip(clip_path, write_node, sg_publish, progress_cb)
 
                     except Exception, e:
-                        errors.append("Could not update flame clip xml: %s" % e)
+                        errors.append("Could not update Flame clip xml: %s" % e)
                         # log the full call stack in addition to showing the error in the UI.
-                        self.parent.log_exception("Could not update flame clip xml!")
+                        self.parent.log_exception("Could not update Flame clip xml!")
 
                         
                 else:
@@ -412,7 +412,7 @@ class PublishHook(Hook):
 
     def _generate_flame_clip_name(self, publish_fields):
         """
-        Generates a name which will be displayed in the dropdown in flame.
+        Generates a name which will be displayed in the dropdown in Flame.
         
         :param publish_fields: Publish fields
         :returns: name string 
@@ -428,7 +428,7 @@ class PublishHook(Hook):
         
         name = ""
         
-        # the shot will already be implied by the clip inside flame (the clip file
+        # the shot will already be implied by the clip inside Flame (the clip file
         # which we are updating is a per-shot file. But if the context contains a task
         # or a step, we can display that:
         if self.parent.context.task:
@@ -457,7 +457,7 @@ class PublishHook(Hook):
 
     def _update_flame_clip(self, clip_path, write_node, sg_publish, progress_cb):
         """
-        Update the flame open clip file for this shot with the published render.
+        Update the Flame open clip file for this shot with the published render.
         
         When a shot has been exported from flame, a clip file is available for each shot.
         We load that up, parse the xml and add a new entry to it.
@@ -605,7 +605,7 @@ class PublishHook(Hook):
         :param progress_cb: progress callback
         """
         
-        progress_cb(1, "Updating flame clip file...")
+        progress_cb(1, "Updating Flame clip file...")
         
         # get the fields from the work file
         render_path = self.__write_node_app.get_node_render_path(write_node)
@@ -617,11 +617,11 @@ class PublishHook(Hook):
         tank_type = self.__write_node_app.get_node_tank_type(write_node)
         render_path_fields["TankType"] = tank_type
         
-        # set up the sequence token to be flame friendly
+        # set up the sequence token to be Flame friendly
         # e.g. mi001_scene_output_v001.[0100-0150].dpx
         # note - we cannot take the frame ranges from the write node - 
         # because those values indicate the intended frame range rather
-        # than the rendered frame range! In order for flame to pick up 
+        # than the rendered frame range! In order for Flame to pick up 
         # the media properly, it needs to contain the actual frame data 
         
         # get all paths for all frames and all eyes
@@ -645,8 +645,8 @@ class PublishHook(Hook):
                             "Will not update Flame clip xml.")
         
         # now when we have the real min/max frame, we can apply a proper sequence marker for the
-        # flame xml. Note that we cannot use the normal FORMAT: token in the template system, because
-        # the flame frame format is not totally "abstract" (e.g. %04d, ####, etc) but contains the frame
+        # Flame xml. Note that we cannot use the normal FORMAT: token in the template system, because
+        # the Flame frame format is not totally "abstract" (e.g. %04d, ####, etc) but contains the frame
         # ranges themselves.
         #
         # the format spec is something like "04"
@@ -759,7 +759,7 @@ class PublishHook(Hook):
         try:
             shutil.copy(clip_path, backup_path)
         except Exception, e:
-            raise TankError("Could not create backup copy of the flame clip file '%s': %s" % (clip_path, e))
+            raise TankError("Could not create backup copy of the Flame clip file '%s': %s" % (clip_path, e))
 
         fh = open(clip_path, "wt")
         try:
