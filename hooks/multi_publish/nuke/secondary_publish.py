@@ -19,6 +19,7 @@ import xml.dom.minidom as minidom
 
 import tank
 from tank import Hook
+from tank import TemplatePath
 from tank import TankError
 
 class PublishHook(Hook):
@@ -660,7 +661,7 @@ class PublishHook(Hook):
         # because the "hub" platform is always linux (with potential flame assist and flare
         # satellite setups on macosx), request that the paths are written out on linux form
         # regardless of the operating system currently running.
-        publish_path_flame = publish_template.apply_fields(render_path_fields, self.parent.tank.PLATFORM_LINUX)
+        publish_path_flame = publish_template.apply_fields(render_path_fields, TemplatePath.PLATFORM_LINUX)
         
         # open up and update our xml file        
         xml = minidom.parse(clip_path)
