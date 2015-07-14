@@ -656,8 +656,11 @@ class PublishHook(Hook):
         # and lastly plug in the values
         render_path_fields["SEQ"] = format_str % (min_frame, max_frame) 
         
-        # contruct the final path             
-        publish_path_flame = publish_template.apply_fields(render_path_fields)
+        # contruct the final path - because flame doesn't have any windows support and 
+        # because the "hub" platform is always linux (with potential flame assist and flare
+        # satellite setups on macosx), request that the paths are written out on linux form
+        # regardless of the operating system currently running.
+        publish_path_flame = publish_template.apply_fields(render_path_fields, "linux2")
         
         # open up and update our xml file        
         xml = minidom.parse(clip_path)
