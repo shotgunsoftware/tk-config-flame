@@ -16,5 +16,5 @@ description: "This is the same as the Default configuration but also includes th
 
 # Required minimum versions for this item to run
 requires_shotgun_version: "v4.3.9"
-requires_core_version: "v0.15.23"
+requires_core_version: "v0.16.15"
  
