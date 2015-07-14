@@ -19,7 +19,6 @@ import xml.dom.minidom as minidom
 
 import tank
 from tank import Hook
-from tank import TemplatePath
 from tank import TankError
 
 class PublishHook(Hook):
