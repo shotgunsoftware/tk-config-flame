@@ -581,7 +581,7 @@ engines:
         sg_version_name_template: nuke_quick_shot_version_name
         width: 1024
       tk-nuke-writenode:
-        location: {name: tk-nuke-writenode, type: app_store, version: v1.0.10}
+        location: {name: tk-nuke-writenode, type: app_store, version: v1.0.16}
         template_script_work: nuke_shot_work
         write_nodes:
         - file_type: exr
@@ -593,6 +593,7 @@ engines:
           settings: {datatype: 32 bit float}
           tank_type: Rendered Image
           tile_color: []
+          promote_write_knobs: []
         - file_type: exr
           name: Stereo Exr, 16 bit
           proxy_publish_template: null
@@ -602,6 +603,7 @@ engines:
           settings: {datatype: 16 bit half}
           tank_type: Rendered Image
           tile_color: []
+          promote_write_knobs: []
         - file_type: dpx
           name: Mono Dpx
           proxy_publish_template: null
@@ -611,6 +613,7 @@ engines:
           settings: {}
           tank_type: Rendered Image
           tile_color: []
+          promote_write_knobs: []
     compatibility_dialog_min_version: 9
     debug_logging: false
     favourite_directories: []
