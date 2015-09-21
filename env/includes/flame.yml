@@ -1,4 +1,4 @@
-# Copyright (c) 2013 Shotgun Software Inc.
+# Copyright (c) 2015 Shotgun Software Inc.
 #
 # CONFIDENTIAL AND PROPRIETARY
 #
@@ -10,18 +10,28 @@
 #
 
 #
-# Standard configuration for Flame and Flare
+# Standard configuration for Flame and Flare. This include bundle
+# contains the flame engine with configured apps and can be 
+# brought in at various points where flame is desired. The configuration
+# bundle assumes a project context
 #
-
-
 std_flame_flare:
+ 
   apps:
+    #
+    # Flame review app that sends a sequence to Shotgun Review
+    #
     tk-flame-review:
       location: {name: tk-flame-review, type: app_store, version: v1.0.5}
       task_template: ""
       shotgun_entity_type: Sequence
       menu_name: Submit for Shotgun review
       settings_hook: '{self}/settings.py'
+
+    #
+    # Complex pipeline based on managed media with shot based 
+    # review and export.
+    #
     tk-flame-export:
       location: {name: tk-flame-export, type: app_store, version: v1.4.0}
       shot_parent_entity_type: Sequence
@@ -48,6 +58,10 @@ std_flame_flare:
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
       batch_publish_type: Flame Batch File
+  
+  #
+  # Flame engine settings
+  #
   debug_logging: false
   location: {name: tk-flame, type: app_store, version: v1.3.4}
   project_startup_hook: '{self}/project_startup.py'
