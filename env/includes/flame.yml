@@ -11,12 +11,12 @@
 
 #
 # Standard configuration for Flame and Flare. This include bundle
-# contains the flame engine with configured apps and can be 
+# contains the flame engine with configured apps and can be
 # brought in at various points where flame is desired. The configuration
 # bundle assumes a project context
 #
 std_flame_flare:
- 
+
   apps:
     #
     # Flame review app that sends a sequence to Shotgun Review
@@ -29,7 +29,7 @@ std_flame_flare:
       settings_hook: '{self}/settings.py'
 
     #
-    # Complex pipeline based on managed media with shot based 
+    # Complex pipeline based on managed media with shot based
     # review and export.
     #
     tk-flame-export:
@@ -53,12 +53,12 @@ std_flame_flare:
         name: 16 bit OpenEXR
         upload_quicktime: true
         quicktime_publish_type: Flame Quicktime
-        quicktime_template: null        
+        quicktime_template: null
       shot_clip_template: flame_shot_clip
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
       batch_publish_type: Flame Batch File
-  
+
   #
   # Flame engine settings
   #
