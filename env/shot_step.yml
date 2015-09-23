@@ -15,7 +15,6 @@ description: Apps and Engines related to Shot based work.
 # include common files
 
 includes:
-
 # launchers for launching DCCs such as Maya, Nuke etc.
 - ./includes/app_launchers.yml
 # common app configurations that are reused across environments
@@ -25,7 +24,6 @@ includes:
 # define all the items that should appear in this environment
 
 engines:
-
   #
   # -------------------------------------------------
   # 3dsmax
@@ -250,8 +248,6 @@ engines:
       type: app_store
       version: v0.1.8
     menu_favourites: []
-
-
   #
   # -------------------------------------------------
   # houdini
@@ -336,7 +332,6 @@ engines:
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-workfiles, name: Shotgun Save As...}
     - {app_instance: tk-multi-publish, name: Publish...}
-
   #
   # -------------------------------------------------
   # maya
@@ -673,7 +668,7 @@ engines:
           display_name: Publish Renders
           icon: icons/publish_nuke_writenode.png
           name: render
-          publish_template: null
+          publish_template:
           required: false
           scene_item_type: write_node
           selected: true
@@ -683,7 +678,7 @@ engines:
           display_name: Send to Screening Room
           icon: icons/publish_nuke_review.png
           name: quicktime
-          publish_template: null
+          publish_template:
           required: false
           scene_item_type: write_node
           selected: true
@@ -784,15 +779,15 @@ engines:
         width: 1024
       tk-nuke-writenode:
         location:
-          name: tk-nuke-writenode
-          type: app_store
           version: v1.0.15
+          type: app_store
+          name: tk-nuke-writenode
         template_script_work: nuke_shot_work
         write_nodes:
         - file_type: exr
           name: Stereo Exr, 32 bit
-          proxy_publish_template: null
-          proxy_render_template: null
+          proxy_publish_template:
+          proxy_render_template:
           publish_template: nuke_shot_render_pub_stereo
           render_template: nuke_shot_render_stereo
           settings:
@@ -802,8 +797,8 @@ engines:
         - file_type: exr
           name: Stereo Exr, 16 bit
           promote_write_knobs: []
-          proxy_publish_template: null
-          proxy_render_template: null
+          proxy_publish_template:
+          proxy_render_template:
           publish_template: nuke_shot_render_pub_stereo
           render_template: nuke_shot_render_stereo
           settings:
@@ -813,8 +808,8 @@ engines:
         - file_type: dpx
           name: Mono Dpx
           promote_write_knobs: []
-          proxy_publish_template: null
-          proxy_render_template: null
+          proxy_publish_template:
+          proxy_render_template:
           publish_template: nuke_shot_render_pub_mono_dpx
           render_template: nuke_shot_render_mono_dpx
           settings: {}
