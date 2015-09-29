@@ -20,6 +20,8 @@ includes:
 - ./includes/app_launchers.yml
 # common app configurations that are reused across environments
 - ./includes/common_apps.yml
+# include flame launchers
+- ./includes/flame.yml
 
 #################################################################################################
 # define all the items that should appear in this environment
