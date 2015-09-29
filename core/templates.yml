@@ -190,17 +190,17 @@ paths:
         definition: 'sequences/{Sequence}/{Shot}/finishing/clip/{Shot}.clip'
         root_name: 'primary'
     flame_shot_batch:
-    	definition: 'sequences/{Sequence}/{Shot}/finishing/batch/{Shot}.v{version}.batch'
-	    root_name: 'primary'
+        definition: 'sequences/{Sequence}/{Shot}/finishing/batch/{Shot}.v{version}.batch'
+        root_name: 'primary'
     flame_shot_render_dpx:
-    	definition: 'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
-    	root_name: 'primary'
+        definition: 'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
+        root_name: 'primary'
     flame_shot_render_exr:
-    	definition: 'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
-    	root_name: 'primary'
+        definition: 'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
+        root_name: 'primary'
     flame_shot_quicktime:
-	    definition: 'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}.mov'
-	    root_name: 'primary'
+        definition: 'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}.mov'
+        root_name: 'primary'
 
 
     #
