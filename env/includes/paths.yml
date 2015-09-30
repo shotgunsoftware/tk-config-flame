@@ -81,24 +81,24 @@ hiero_linux: /usr/local/Hiero1.8v2/bin/Hiero1.8v2
 #
 # Flame
 #
-flame_linux: /usr/discreet/flame_2016.1/bin/startApplication
+flame_linux: /usr/discreet/flame_2016/bin/startApplication
 
 #
 # Flame Premium
 #
-flame_premium_linux: /usr/discreet/flamepremium_2016.1/bin/startApplication
+flame_premium_linux: /usr/discreet/flamepremium_2016/bin/startApplication
 
 #
 # Flame Assist
 #
-flame_assist_mac: /usr/discreet/flameassist_2016.1/bin/startApplication
-flame_assist_linux: /usr/discreet/flameassist_2016.1/bin/startApplication
+flame_assist_mac: /usr/discreet/flameassist_2016/bin/startApplication
+flame_assist_linux: /usr/discreet/flameassist_2016/bin/startApplication
 
 #
 # Flare
 #
-flare_mac: /usr/discreet/flare_2016.1/bin/startApplication
-flare_linux: /usr/discreet/flare_2016.1/bin/startApplication
+flare_mac: /usr/discreet/flare_2016/bin/startApplication
+flare_linux: /usr/discreet/flare_2016/bin/startApplication
 
 
 #
