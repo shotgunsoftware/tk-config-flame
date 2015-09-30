@@ -1,11 +1,11 @@
-# Copyright (c) 2013 Shotgun Software Inc.
-# 
+# Copyright (c) 2015 Shotgun Software Inc.
+#
 # CONFIDENTIAL AND PROPRIETARY
-# 
-# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit 
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
 # Source Code License included in this distribution package. See LICENSE.
-# By accessing, using, copying or modifying this work you indicate your 
-# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights 
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
 import os
@@ -31,66 +31,66 @@ class PublishHook(Hook):
         """
         # call base init
         Hook.__init__(self, *args, **kwargs)
-        
+
         # cache a couple of apps that we may need later on:
         self.__write_node_app = self.parent.engine.apps.get("tk-nuke-writenode")
         self.__review_submission_app = self.parent.engine.apps.get("tk-multi-reviewsubmission")
-            
+
     def execute(self, tasks, work_template, comment, thumbnail_path, sg_task, primary_task, primary_publish_path, progress_cb, **kwargs):
         """
         Main hook entry point
-        :param tasks:                   List of secondary tasks to be published.  Each task is a 
+        :param tasks:                   List of secondary tasks to be published.  Each task is a
                                         dictionary containing the following keys:
                                         {
                                             item:   Dictionary
-                                                    This is the item returned by the scan hook 
-                                                    {   
+                                                    This is the item returned by the scan hook
+                                                    {
                                                         name:           String
                                                         description:    String
                                                         type:           String
                                                         other_params:   Dictionary
                                                     }
-                                                   
+
                                             output: Dictionary
-                                                    This is the output as defined in the configuration - the 
-                                                    primary output will always be named 'primary' 
+                                                    This is the output as defined in the configuration - the
+                                                    primary output will always be named 'primary'
                                                     {
                                                         name:             String
                                                         publish_template: template
                                                         tank_type:        String
                                                     }
                                         }
-                        
+
         :param work_template:           template
                                         This is the template defined in the config that
                                         represents the current work file
-               
+
         :param comment:                 String
                                         The comment provided for the publish
-                        
+
         :param thumbnail:               Path string
                                         The default thumbnail provided for the publish
-                        
+
         :param sg_task:                 Dictionary (shotgun entity description)
-                                        The shotgun task to use for the publish    
-                        
+                                        The shotgun task to use for the publish
+
         :param primary_publish_path:    Path string
                                         This is the path of the primary published file as returned
                                         by the primary publish hook
-                        
+
         :param progress_cb:             Function
                                         A progress callback to log progress during pre-publish.  Call:
-                                        
+
                                             progress_cb(percentage, msg)
-                                             
+
                                         to report progress to the UI
-                        
+
         :param primary_task:            The primary task that was published by the primary publish hook.  Passed
                                         in here for reference.  This is a dictionary in the same format as the
                                         secondary tasks above.
-        
-        :returns:                       A list of any tasks that had problems that need to be reported 
-                                        in the UI.  Each item in the list should be a dictionary containing 
+
+        :returns:                       A list of any tasks that had problems that need to be reported
+                                        in the UI.  Each item in the list should be a dictionary containing
                                         the following keys:
                                         {
                                             task:   Dictionary
@@ -100,9 +100,9 @@ class PublishHook(Hook):
                                                         item:...
                                                         output:...
                                                     }
-                                                    
+
                                             errors: List
-                                                    A list of error messages (strings) to report    
+                                                    A list of error messages (strings) to report
                                         }
         """
         results = []
@@ -110,7 +110,7 @@ class PublishHook(Hook):
         # it's important that tasks for render output are processed
         # before tasks for quicktime output, so let's group the
         # task list by output.  This can be controlled through the
-        # configuration but we shouldn't rely on that being set up 
+        # configuration but we shouldn't rely on that being set up
         # correctly!
         output_order = ["render", "quicktime"]
         tasks_by_output = {}
@@ -131,23 +131,23 @@ class PublishHook(Hook):
             if not self.__review_submission_app:
                 raise TankError("Unable to publish Review Versions without the tk-multi-reviewsubmission app!")
 
-                
+
         # Keep of track of what has been published in shotgun
         # this is needed as input into the review creation code...
         render_publishes = {}
 
         # process outputs in order:
         for output_name in output_order:
-            
+
             # process each task for this output:
             for task in tasks_by_output.get(output_name, []):
-            
+
                 # keep track of our errors for this task
                 errors = []
-    
+
                 # report progress:
                 progress_cb(0.0, "Publishing", task)
-            
+
                 if output_name == "render":
                     # Publish the rendered output for a Shotgun Write Node
 
@@ -156,37 +156,37 @@ class PublishHook(Hook):
                     write_node = task["item"].get("other_params", dict()).get("node")
                     if not write_node:
                         raise TankError("Could not determine nuke write node for item '%s'!" % str(task))
-        
-                    # publish write-node rendered sequence                
+
+                    # publish write-node rendered sequence
                     try:
-                        (sg_publish, thumbnail_path) = self._publish_write_node_render(task, 
-                                                                                       write_node, 
-                                                                                       primary_publish_path, 
-                                                                                       sg_task, 
-                                                                                       comment, 
+                        (sg_publish, thumbnail_path) = self._publish_write_node_render(task,
+                                                                                       write_node,
+                                                                                       primary_publish_path,
+                                                                                       sg_task,
+                                                                                       comment,
                                                                                        progress_cb)
-                        
+
                         # keep track of our publish data so that we can pick it up later in review
                         render_publishes[ write_node.name() ] = (sg_publish, thumbnail_path)
                     except Exception, e:
                         errors.append("Publish failed - %s" % e)
-    
+
                 elif output_name == "quicktime":
                     # Publish the reviewable quicktime movie for a Shotgun Write Node
-    
+
                     # each publish task is connected to a nuke write node
                     # this value was populated via the scan scene hook
                     write_node = task["item"].get("other_params", dict()).get("node")
                     if not write_node:
                         raise TankError("Could not determine nuke write node for item '%s'!" % str(task))
-        
+
                     # Submit published sequence to Screening Room
                     try:
                         # pick up sg data from the render dict we are maintianing
                         # note: we assume that the rendering tasks always happen
-                        # before the review tasks inside the publish... 
+                        # before the review tasks inside the publish...
                         (sg_publish, thumbnail_path) = render_publishes[ write_node.name() ]
-                        
+
                         self._send_to_screening_room (
                             write_node,
                             sg_publish,
@@ -200,8 +200,8 @@ class PublishHook(Hook):
                         errors.append("Submit to Screening Room failed - %s" % e)
 
                 elif output_name == "flame":
-                    # Update the Flame clip xml 
-    
+                    # Update the Flame clip xml
+
                     # each publish task is connected to a nuke write node
                     # this value was populated via the scan scene hook
                     write_node = task["item"].get("other_params", dict()).get("node")
@@ -219,7 +219,7 @@ class PublishHook(Hook):
                         # note: we assume that the rendering tasks always happen
                         # before the Flame tasks inside the publish...
                         (sg_publish, thumbnail_path) = render_publishes[ write_node.name() ]
-                        
+
                         self._update_flame_clip(clip_path, write_node, sg_publish, progress_cb)
 
                     except Exception, e:
@@ -227,25 +227,25 @@ class PublishHook(Hook):
                         # log the full call stack in addition to showing the error in the UI.
                         self.parent.log_exception("Could not update Flame clip xml!")
 
-                        
+
                 else:
                     # unhandled output type!
                     errors.append("Don't know how to publish this item!")
-    
+
                 # if there is anything to report then add to result
                 if len(errors) > 0:
                     # add result:
                     results.append({"task":task, "errors":errors})
-    
+
                 # task is finished
-                progress_cb(100)            
-        
+                progress_cb(100)
+
         return results
 
 
     def _send_to_screening_room(self, write_node, sg_publish, sg_task, comment, thumbnail_path, progress_cb):
         """
-        Take a write node's published files and run them through the review_submission app 
+        Take a write node's published files and run them through the review_submission app
         to get a movie and Shotgun Version.
 
         :param write_node:      The Shotgun Write node to submit a review version for
@@ -257,7 +257,7 @@ class PublishHook(Hook):
         """
         render_path = self.__write_node_app.get_node_render_path(write_node)
         render_template = self.__write_node_app.get_node_render_template(write_node)
-        publish_template = self.__write_node_app.get_node_publish_template(write_node)                        
+        publish_template = self.__write_node_app.get_node_publish_template(write_node)
         render_path_fields = render_template.get_fields(render_path)
 
         if hasattr(self.__review_submission_app, "render_and_submit_version"):
@@ -302,7 +302,7 @@ class PublishHook(Hook):
         cs_knob = node.knob("colorspace")
         if not cs_knob:
             return
-    
+
         cs = cs_knob.value()
         # handle default value where cs would be something like: 'default (linear)'
         if cs.startswith("default (") and cs.endswith(")"):
@@ -313,28 +313,28 @@ class PublishHook(Hook):
         """
         Publish render output for write node
         """
- 
+
         if self.__write_node_app.is_node_render_path_locked(write_node):
             # this is a fatal error as publishing would result in inconsistent paths for the rendered files!
             raise TankError("The render path is currently locked and does not match match the current Work Area.")
- 
+
         progress_cb(10, "Finding renders")
- 
+
         # get info we need in order to do the publish:
         render_path = self.__write_node_app.get_node_render_path(write_node)
         render_files = self.__write_node_app.get_node_render_files(write_node)
         render_template = self.__write_node_app.get_node_render_template(write_node)
-        publish_template = self.__write_node_app.get_node_publish_template(write_node)                        
+        publish_template = self.__write_node_app.get_node_publish_template(write_node)
         tank_type = self.__write_node_app.get_node_tank_type(write_node)
-        
+
         # publish (copy files):
-        
+
         progress_cb(25, "Copying files")
-        
+
         for fi, rf in enumerate(render_files):
-            
+
             progress_cb(25 + (50*(len(render_files)/(fi+1))))
-            
+
             # construct the publish path:
             fields = render_template.get_fields(rf)
             fields["TankType"] = tank_type
@@ -347,14 +347,14 @@ class PublishHook(Hook):
                 self.parent.copy_file(rf, target_path, task)
             except Exception, e:
                 raise TankError("Failed to copy file from %s to %s - %s" % (rf, target_path, e))
-            
+
         progress_cb(40, "Publishing to Shotgun")
-            
+
         # use the render path to work out the publish 'file' and name:
         render_path_fields = render_template.get_fields(render_path)
         render_path_fields["TankType"] = tank_type
         publish_path = publish_template.apply_fields(render_path_fields)
-            
+
         # construct publish name:
         publish_name = ""
         rp_name = render_path_fields.get("name")
@@ -367,27 +367,27 @@ class PublishHook(Hook):
             publish_name = rp_name
         else:
             publish_name = "%s, Channel %s" % (rp_name, rp_channel)
-        
+
         publish_version = render_path_fields["version"]
-            
+
         # get/generate thumbnail:
         thumbnail_path = self.__write_node_app.generate_node_thumbnail(write_node)
-            
+
         # register the publish:
-        sg_publish = self._register_publish(publish_path, 
-                                            publish_name, 
-                                            sg_task, 
-                                            publish_version, 
+        sg_publish = self._register_publish(publish_path,
+                                            publish_name,
+                                            sg_task,
+                                            publish_version,
                                             tank_type,
                                             comment,
-                                            thumbnail_path, 
+                                            thumbnail_path,
                                             [published_script_path])
-        
+
         return sg_publish, thumbnail_path
 
     def _register_publish(self, path, name, sg_task, publish_version, tank_type, comment, thumbnail_path, dependency_paths):
         """
-        Helper method to register publish using the 
+        Helper method to register publish using the
         specified publish info.
         """
         # construct args:
@@ -403,21 +403,21 @@ class PublishHook(Hook):
             "dependency_paths": dependency_paths,
             "published_file_type":tank_type,
         }
-        
+
         # register publish;
         sg_data = tank.util.register_publish(**args)
-        
+
         return sg_data
-        
+
 
     def _generate_flame_clip_name(self, publish_fields):
         """
         Generates a name which will be displayed in the dropdown in Flame.
-        
+
         :param publish_fields: Publish fields
-        :returns: name string 
+        :returns: name string
         """
-        
+
         # this implementation generates names on the following form:
         #
         # Comp, scene.nk (output background), v023
@@ -425,9 +425,9 @@ class PublishHook(Hook):
         # Lighting CBBs, final.nk, v034
         #
         # (depending on what pieces are available in context and names, names may vary)
-        
+
         name = ""
-        
+
         # the shot will already be implied by the clip inside Flame (the clip file
         # which we are updating is a per-shot file. But if the context contains a task
         # or a step, we can display that:
@@ -435,12 +435,12 @@ class PublishHook(Hook):
             name += "%s, " % self.parent.context.task["name"].capitalize()
         elif self.parent.context.step:
             name += "%s, " % self.parent.context.step["name"].capitalize()
-        
+
         # if we have a channel set for the write node
         # or a name for the scene, add those
         rp_name = publish_fields.get("name")
         rp_channel = publish_fields.get("channel")
-        
+
         if rp_name and rp_channel:
             name += "%s.nk (output %s), " % (rp_name, rp_channel)
         elif not rp_name:
@@ -449,26 +449,26 @@ class PublishHook(Hook):
             name += "%s.nk, " % rp_name
         else:
             name += "Nuke, "
-        
+
         # and finish with version number
         name += "v%03d" % (publish_fields.get("version") or 0)
-        
+
         return name
 
     def _update_flame_clip(self, clip_path, write_node, sg_publish, progress_cb):
         """
         Update the Flame open clip file for this shot with the published render.
-        
+
         When a shot has been exported from flame, a clip file is available for each shot.
         We load that up, parse the xml and add a new entry to it.
-        
+
         For docs on the clip format, see:
         http://knowledge.autodesk.com/support/flame-products/troubleshooting/caas/sfdcarticles/sfdcarticles/Creating-clip-Open-Clip-files-from-multi-EXR-assets.html
         http://docs.autodesk.com/flamepremium2015/index.html?url=files/GUID-1A051CEB-429B-413C-B6CA-256F4BB5D254.htm,topicNumber=d30e45343
-        
-        
+
+
         When the clip file is updated, a new <version> tag and a new <feed> tag are inserted:
-        
+
         <feed type="feed" vuid="v002" uid="DA62F3A2-BA3B-4939-8089-EC7FC603AC74">
             <spans type="spans" version="4">
                 <span type="span" version="4">
@@ -483,9 +483,9 @@ class PublishHook(Hook):
             <userData type="dict">
             </userData>
         </version>
-        
+
         An example clip XML file would look something like this:
-        
+
         <?xml version="1.0" encoding="UTF-8"?>
         <clip type="clip" version="4">
             <handler type="handler">
@@ -515,7 +515,7 @@ class PublishHook(Hook):
                         <GATEWAY_SERVER_NAME type="string">xxx</GATEWAY_SERVER_NAME>
                     </userData>
                     <feeds currentVersion="v002">
-        
+
                         <feed type="feed" vuid="v000" uid="5E21801C-41C2-4B47-90B6-C1E25235F032">
                             <storageFormat type="format">
                                 <type>video</type>
@@ -598,35 +598,35 @@ class PublishHook(Hook):
                 </version>
             </versions>
         </clip>
-                
+
         :param clip_path: path to the clip xml file to add the publish to
         :param write_node: current write node object
-        :param sg_publish: shotgun publish 
+        :param sg_publish: shotgun publish
         :param progress_cb: progress callback
         """
-        
+
         progress_cb(1, "Updating Flame clip file...")
-        
+
         # get the fields from the work file
         render_path = self.__write_node_app.get_node_render_path(write_node)
         render_template = self.__write_node_app.get_node_render_template(write_node)
         render_path_fields = render_template.get_fields(render_path)
         publish_template = self.__write_node_app.get_node_publish_template(write_node)
-        
-        # append extra fields needed by the publish template 
+
+        # append extra fields needed by the publish template
         tank_type = self.__write_node_app.get_node_tank_type(write_node)
         render_path_fields["TankType"] = tank_type
-        
+
         # set up the sequence token to be Flame friendly
         # e.g. mi001_scene_output_v001.[0100-0150].dpx
-        # note - we cannot take the frame ranges from the write node - 
+        # note - we cannot take the frame ranges from the write node -
         # because those values indicate the intended frame range rather
-        # than the rendered frame range! In order for Flame to pick up 
-        # the media properly, it needs to contain the actual frame data 
-        
+        # than the rendered frame range! In order for Flame to pick up
+        # the media properly, it needs to contain the actual frame data
+
         # get all paths for all frames and all eyes
         paths = self.parent.sgtk.paths_from_template(publish_template, render_path_fields, skip_keys = ["SEQ", "eye"])
-        
+
         # for each of them, extract the frame number. Track the min and the max
         min_frame = None
         max_frame = None
@@ -637,13 +637,13 @@ class PublishHook(Hook):
                 min_frame = frame_number
             if max_frame is None or frame_number > max_frame:
                 max_frame = frame_number
-        
+
         if min_frame is None or max_frame is None:
             # shouldn't really end up here - the validation checks that
             # stuff has actually been rendered.
             raise TankError("Couldn't extract min and max frame from the published sequence! "
                             "Will not update Flame clip xml.")
-        
+
         # now when we have the real min/max frame, we can apply a proper sequence marker for the
         # Flame xml. Note that we cannot use the normal FORMAT: token in the template system, because
         # the Flame frame format is not totally "abstract" (e.g. %04d, ####, etc) but contains the frame
@@ -652,17 +652,17 @@ class PublishHook(Hook):
         # the format spec is something like "04"
         sequence_key = publish_template.keys["SEQ"]
         # now compose the format string, eg. [%04d-%04d]
-        format_str = "[%%%sd-%%%sd]" % (sequence_key.format_spec, sequence_key.format_spec) 
+        format_str = "[%%%sd-%%%sd]" % (sequence_key.format_spec, sequence_key.format_spec)
         # and lastly plug in the values
-        render_path_fields["SEQ"] = format_str % (min_frame, max_frame) 
-        
-        # contruct the final path - because flame doesn't have any windows support and 
+        render_path_fields["SEQ"] = format_str % (min_frame, max_frame)
+
+        # contruct the final path - because flame doesn't have any windows support and
         # because the "hub" platform is always linux (with potential flame assist and flare
         # satellite setups on macosx), request that the paths are written out on linux form
         # regardless of the operating system currently running.
         publish_path_flame = publish_template.apply_fields(render_path_fields, "linux2")
-        
-        # open up and update our xml file        
+
+        # open up and update our xml file
         xml = minidom.parse(clip_path)
 
         # find first <track type="track" uid="video">
@@ -671,7 +671,7 @@ class PublishHook(Hook):
             if track.attributes["uid"].value == "video":
                 first_video_track = track
                 break
-            
+
         if first_video_track is None:
             raise TankError("Could not find <track type='track' uid='video'> in clip file!")
 
@@ -693,13 +693,13 @@ class PublishHook(Hook):
         feed_node.setAttribute("type", "feed")
         feed_node.setAttribute("uid", unique_id)
         feed_node.setAttribute("vuid", unique_id)
-        
+
         # <spans type="spans" version="4">
         spans_node = xml.createElement("spans")
         spans_node.setAttribute("type", "spans")
         spans_node.setAttribute("version", "4")
         feed_node.appendChild(spans_node)
-        
+
         # <span type="span" version="4">
         span_node = xml.createElement("span")
         span_node.setAttribute("type", "span")
@@ -731,26 +731,26 @@ class PublishHook(Hook):
         version_node = xml.createElement("version")
         version_node.setAttribute("type", "version")
         version_node.setAttribute("uid", unique_id)
-        
+
         # <name>v003 Comp</name>
         child_node = xml.createElement("name")
         child_node.appendChild(xml.createTextNode(formatted_name))
         version_node.appendChild(child_node)
-        
+
         # <creationDate>1229-12-12 12:12:12</creationDate>
         child_node = xml.createElement("creationDate")
         child_node.appendChild(xml.createTextNode(date_str))
         version_node.appendChild(child_node)
-        
+
         # <userData type="dict">
         child_node = xml.createElement("userData")
         child_node.setAttribute("type", "dict")
         version_node.appendChild(child_node)
-        
+
         # add new feed to first list of versions
-        xml.getElementsByTagName("versions")[0].appendChild(version_node)        
+        xml.getElementsByTagName("versions")[0].appendChild(version_node)
         xml_string = xml.toxml(encoding="UTF-8")
-        
+
         # make a backup of the clip file before we update it
         #
         # note - we are not using the template system here for simplicity
@@ -769,4 +769,3 @@ class PublishHook(Hook):
             fh.write(xml_string)
         finally:
             fh.close()
-        

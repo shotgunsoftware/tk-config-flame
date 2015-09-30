@@ -1,4 +1,4 @@
-# Copyright (c) 2013 Shotgun Software Inc.
+# Copyright (c) 2015 Shotgun Software Inc.
 #
 # CONFIDENTIAL AND PROPRIETARY
 #
@@ -32,9 +32,9 @@ maya_linux: maya
 #
 # nuke
 #
-nuke_mac: /Applications/Nuke8.0v5/Nuke8.0v5.app
-nuke_windows: 'C:\Program Files\Nuke8.0v5\Nuke8.0.exe'
-nuke_linux: Nuke8.0
+nuke_mac: /Applications/Nuke9.0v3/Nuke9.0v3.app
+nuke_windows: 'C:\Program Files\Nuke9.0v3\Nuke9.0.exe'
+nuke_linux: Nuke9.0
 
 
 #
@@ -44,9 +44,9 @@ motionbuilder_windows: 'C:\Program Files\Autodesk\MotionBuilder 2014\bin\x64\mot
 
 
 #
-# 3dsmax 2012
+# 3dsmax 2015
 #
-3dsmax_windows: 'C:\Program Files\Autodesk\3ds Max 2012\3dsmax.exe'
+3dsmax_windows: 'C:\Program Files\Autodesk\3ds Max 2015\3dsmax.exe'
 
 
 #
@@ -69,6 +69,7 @@ photoshop_extras:
     mac_python_path: ''
     windows_extension_manager_path: 'C:\Program Files (x86)\Adobe\Adobe Extension Manager CS6\XManCommand.exe'
     windows_python_path: ''
+
 
 #
 # Hiero
@@ -103,9 +104,9 @@ flare_linux: /usr/discreet/flare_2016/bin/startApplication
 #
 # Softimage
 #
-
 softimage_windows: C:\Program Files\Autodesk\Softimage 2013\Application\bin\XSI.bat
 softimage_linux: XSI
+
 
 #
 # Tweak RV
