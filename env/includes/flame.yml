@@ -16,28 +16,29 @@
 # bundle assumes a project context
 #
 std_flame_flare:
-
   apps:
     #
     # Flame review app that sends a sequence to Shotgun Review
     #
     tk-flame-review:
       location: {name: tk-flame-review, type: app_store, version: v1.0.5}
-      task_template: ""
+      task_template: ''
       shotgun_entity_type: Sequence
       menu_name: Submit for Shotgun review
       settings_hook: '{self}/settings.py'
-
     #
     # Complex pipeline based on managed media with shot based
     # review and export.
     #
     tk-flame-export:
-      location: {name: tk-flame-export, type: app_store, version: v1.4.0}
+      location:
+        version: v1.5.0
+        type: app_store
+        name: tk-flame-export
       shot_parent_entity_type: Sequence
       shot_parent_link_field: sg_sequence
-      shot_parent_task_template: ""
-      task_template: "Basic shot template"
+      shot_parent_task_template: ''
+      task_template: Basic shot template
       menu_name: Shotgun Shot Export
       settings_hook: '{self}/settings.py'
       bypass_shotgun_transcoding: false
@@ -47,13 +48,17 @@ std_flame_flare:
         name: 10 bit DPX
         upload_quicktime: true
         quicktime_publish_type: Flame Quicktime
-        quicktime_template: null
+        quicktime_template:
+        batch_quicktime_template:
+        batch_render_template:
       - template: flame_shot_render_exr
         publish_type: Flame Render
         name: 16 bit OpenEXR
         upload_quicktime: true
         quicktime_publish_type: Flame Quicktime
-        quicktime_template: null
+        quicktime_template:
+        batch_quicktime_template:
+        batch_render_template:
       shot_clip_template: flame_shot_clip
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
@@ -63,7 +68,12 @@ std_flame_flare:
   # Flame engine settings
   #
   debug_logging: false
-  location: {name: tk-flame, type: app_store, version: v1.3.4}
+  location:
+    version: v1.4.0
+    type: app_store
+    name: tk-flame
   project_startup_hook: '{self}/project_startup.py'
   flame_batch_publish_type: Flame Batch File
-  backburner_shared_tmp: '/tmp'
+  backburner_shared_tmp: /tmp
+  run_at_startup: []
+  backburner_manager: ''
