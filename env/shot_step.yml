@@ -55,9 +55,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          name: tk-multi-loader2
+          version: v1.7.3
           type: app_store
-          version: v1.7.1
+          name: tk-multi-loader2
         menu_name: Load
         publish_filters: []
         title_name: Loader
@@ -168,9 +168,9 @@ engines:
           publish_filters: []
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          name: tk-multi-loader2
+          version: v1.7.3
           type: app_store
-          version: v1.7.1
+          name: tk-multi-loader2
         menu_name: Load
         publish_filters: []
         title_name: Loader
@@ -371,9 +371,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          name: tk-multi-loader2
+          version: v1.7.3
           type: app_store
-          version: v1.7.1
+          name: tk-multi-loader2
         menu_name: Load
         publish_filters: []
         title_name: Loader
@@ -509,9 +509,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          name: tk-multi-loader2
+          version: v1.7.3
           type: app_store
-          version: v1.7.1
+          name: tk-multi-loader2
         menu_name: Load
         publish_filters: []
         title_name: Loader
@@ -634,9 +634,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          name: tk-multi-loader2
+          version: v1.7.3
           type: app_store
-          version: v1.7.1
+          name: tk-multi-loader2
         menu_name: Load
         publish_filters: []
         title_name: Loader
@@ -696,9 +696,9 @@ engines:
         template_work: nuke_shot_work
       tk-multi-reviewsubmission:
         location:
-          name: tk-multi-reviewsubmission
+          version: v0.2.0
           type: app_store
-          version: v0.1.12
+          name: tk-multi-reviewsubmission
         movie_height: 540
         movie_path_template: nuke_shot_render_movie
         movie_width: 1024
@@ -707,6 +707,7 @@ engines:
         store_on_disk: true
         upload_to_shotgun: true
         version_number_padding: 3
+        codec_settings_hook: '{self}/codec_settings.py'
       tk-multi-screeningroom: '@launch_screeningroom'
       tk-multi-setframerange:
         location:
@@ -770,16 +771,18 @@ engines:
         current_scene_template: nuke_shot_work
         height: 768
         location:
-          name: tk-nuke-quickdailies
+          version: v0.2.0
           type: app_store
-          version: v0.1.8
+          name: tk-nuke-quickdailies
         movie_template: shot_quicktime_quick
         post_hooks: [snapshot_history_post_quickdaily]
         sg_version_name_template: nuke_quick_shot_version_name
         width: 1024
+        upload_movie: false
+        codec_settings_hook: '{self}/codec_settings.py'
       tk-nuke-writenode:
         location:
-          version: v1.0.15
+          version: v1.0.18
           type: app_store
           name: tk-nuke-writenode
         template_script_work: nuke_shot_work
@@ -794,6 +797,7 @@ engines:
             datatype: 32 bit float
           tank_type: Rendered Image
           tile_color: []
+          promote_write_knobs: []
         - file_type: exr
           name: Stereo Exr, 16 bit
           promote_write_knobs: []
@@ -861,9 +865,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          name: tk-multi-loader2
+          version: v1.7.3
           type: app_store
-          version: v1.7.1
+          name: tk-multi-loader2
         menu_name: Load
         publish_filters: []
         title_name: Loader
