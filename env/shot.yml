@@ -21,7 +21,6 @@ description: Apps and engines loaded when a Shot is loaded. Since std VFX config
 # include common files
 
 includes:
-
 # launchers for launching DCCs such as Maya, Nuke etc.
 - ./includes/app_launchers.yml
 # common app configurations that are reused across environments
@@ -34,7 +33,6 @@ includes:
 
 
 engines:
-
   #
   # -------------------------------------------------
   # 3dsmax
@@ -66,7 +64,6 @@ engines:
       type: app_store
       version: v0.1.8
     menu_favourites: []
-
   #
   # -------------------------------------------------
   # maya
@@ -84,7 +81,7 @@ engines:
       version: v0.5.2
     menu_favourites:
     - {app_instance: tk-multi-workfiles, name: Shotgun File Manager...}
-    template_project: null
+    template_project:
     use_sgtk_as_menu_name: false
 
   #
@@ -118,14 +115,17 @@ engines:
     debug_logging: false
     favourite_directories: []
     location:
-      name: tk-nuke
+      version: v0.4.1
       type: app_store
-      version: v0.3.3
+      name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles, name: Shotgun File Manager...}
     project_favourite_name: Shotgun Current Project
     use_sgtk_as_menu_name: false
 
+    timeline_context_menu: []
+    bin_context_menu: []
+    spreadsheet_context_menu: []
   #
   # -------------------------------------------------
   # Photoshop
@@ -142,7 +142,6 @@ engines:
       version: v0.3.2
 
   tk-flare: '@std_flame_flare'
-
   #
   # -------------------------------------------------
   # Shell (tank command)
@@ -178,7 +177,7 @@ engines:
       version: v0.3.1
     menu_favourites:
     - {app_instance: tk-multi-workfiles, name: Shotgun File Manager...}
-    template_project: null
+    template_project:
 #
 ###############################################################################
 #
