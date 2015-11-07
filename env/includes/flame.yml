@@ -69,7 +69,7 @@ std_flame_flare:
   #
   debug_logging: false
   location:
-    version: v1.4.1
+    version: v1.4.2
     type: app_store
     name: tk-flame
   project_startup_hook: '{self}/project_startup.py'
@@ -77,3 +77,4 @@ std_flame_flare:
   backburner_shared_tmp: /tmp
   run_at_startup: []
   backburner_manager: ''
+  context_menu: []

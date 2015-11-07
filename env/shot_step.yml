@@ -55,7 +55,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.7.3
+          version: v1.7.4
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -168,7 +168,7 @@ engines:
           publish_filters: []
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.7.3
+          version: v1.7.4
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -248,6 +248,7 @@ engines:
       type: app_store
       version: v0.1.8
     menu_favourites: []
+
   #
   # -------------------------------------------------
   # houdini
@@ -324,14 +325,17 @@ engines:
         version_compare_ignore_fields: []
     debug_logging: false
     location:
-      name: tk-houdini
+      version: v0.2.5
       type: app_store
-      version: v0.2.2
+      name: tk-houdini
     menu_favourites:
     - {app_instance: tk-multi-workfiles, name: Shotgun File Manager...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-workfiles, name: Shotgun Save As...}
     - {app_instance: tk-multi-publish, name: Publish...}
+    enable_sg_shelf: true
+    enable_sg_menu: true
+
   #
   # -------------------------------------------------
   # maya
@@ -371,7 +375,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.7.3
+          version: v1.7.4
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -425,9 +429,9 @@ engines:
             filters: {}
         actions_hook: '{self}/tk-maya_actions.py'
         location:
-          name: tk-multi-shotgunpanel
+          version: v1.0.5
           type: app_store
-          version: v1.0.4
+          name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
       tk-multi-snapshot:
         hook_copy_file: default
@@ -480,7 +484,7 @@ engines:
 
   #
   # -------------------------------------------------
-  # 3dsmax
+  # motionbuilder
   # -------------------------------------------------
   tk-motionbuilder:
     apps:
@@ -509,7 +513,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.7.3
+          version: v1.7.4
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -634,7 +638,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.7.3
+          version: v1.7.4
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -728,9 +732,9 @@ engines:
             filters: {}
         actions_hook: '{self}/tk-nuke_actions.py'
         location:
-          name: tk-multi-shotgunpanel
+          version: v1.0.5
           type: app_store
-          version: v1.0.4
+          name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
       tk-multi-snapshot:
         hook_copy_file: default
@@ -836,6 +840,7 @@ engines:
     timeline_context_menu: []
     bin_context_menu: []
     spreadsheet_context_menu: []
+
   #
   # -------------------------------------------------
   # photoshop
@@ -868,7 +873,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.7.3
+          version: v1.7.4
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
