@@ -122,7 +122,6 @@ engines:
     - {app_instance: tk-multi-workfiles, name: Shotgun File Manager...}
     project_favourite_name: Shotgun Current Project
     use_sgtk_as_menu_name: false
-
     timeline_context_menu: []
     bin_context_menu: []
     spreadsheet_context_menu: []
