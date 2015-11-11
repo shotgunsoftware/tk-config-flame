@@ -82,11 +82,13 @@ hiero_linux: Nuke9.0
 # Flame
 #
 flame_linux: /usr/discreet/flame_2016.1/bin/startApplication
+flame_mac: /usr/discreet/flame_2016.1/bin/startApplication
 
 #
 # Flame Premium
 #
 flame_premium_linux: /usr/discreet/flamepremium_2016.1/bin/startApplication
+flame_premium_mac: /usr/discreet/flamepremium_2016.1/bin/startApplication
 
 #
 # Flame Assist

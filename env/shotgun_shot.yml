@@ -35,6 +35,8 @@ engines:
       tk-multi-launchmotionbuilder: '@launch_motionbuilder'
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchflare: '@launch_flare'
+      tk-multi-launchflamepremium: '@launch_flame_premium'
+      tk-multi-launchflame: '@launch_flame'
       tk-multi-launchphotoshop: '@launch_photoshop'
       tk-multi-launchsoftimage: '@launch_softimage'
       tk-multi-screeningroom: '@launch_screeningroom'
