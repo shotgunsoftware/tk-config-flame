@@ -39,10 +39,9 @@ engines:
       tk-multi-workfiles: '@workfiles'
     debug_logging: false
     location:
-      name: tk-3dsmax
+      version: v0.3.6
       type: app_store
-      version: v0.3.5
-
+      name: tk-3dsmax
   #
   # -------------------------------------------------
   # 3dsmax plus
@@ -59,7 +58,6 @@ engines:
       type: app_store
       version: v0.1.8
     menu_favourites: []
-
   #
   # -------------------------------------------------
   # Shotgun Desktop
@@ -233,7 +231,6 @@ engines:
     timeline_context_menu:
     - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in Shotgun,
       requires_selection: true}
-
   #
   # -------------------------------------------------
   # Mari
@@ -269,10 +266,9 @@ engines:
     compatibility_dialog_min_version: 2
     debug_logging: false
     location:
-      name: tk-mari
+      version: v1.1.0
       type: app_store
-      version: v1.0.2
-
+      name: tk-mari
   #
   # -------------------------------------------------
   # Maya
@@ -335,7 +331,6 @@ engines:
     timeline_context_menu: []
     bin_context_menu: []
     spreadsheet_context_menu: []
-
   #
   # -------------------------------------------------
   # Photoshop
@@ -366,6 +361,10 @@ engines:
       tk-multi-launchphotoshop: '@launch_photoshop'
       tk-multi-launchsoftimage: '@launch_softimage'
       tk-multi-screeningroom: '@launch_screeningroom'
+      tk-multi-launchflame: '@launch_flame'
+      tk-multi-launchflare: '@launch_flare'
+      tk-multi-launchflameassist: '@launch_flame_assist'
+      tk-multi-launchflamepremium: '@launch_flame_premium'
     location:
       name: tk-shell
       type: app_store
