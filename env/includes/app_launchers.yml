@@ -307,12 +307,13 @@ launch_screeningroom:
   enable_rv_mode: true
   enable_web_mode: true
   location:
-    name: tk-multi-screeningroom
+    version: v0.2.0
     type: app_store
-    version: v0.1.10
+    name: tk-multi-screeningroom
   rv_path_linux: '@rv_linux'
   rv_path_mac: '@rv_mac'
   rv_path_windows: '@rv_win'
+  init_hook: '{self}/init.py'
 #
 # -------------------------------------------------
 # Softimage

@@ -124,10 +124,9 @@ engines:
         version_compare_ignore_fields: []
     debug_logging: false
     location:
-      name: tk-3dsmax
+      version: v0.3.6
       type: app_store
-      version: v0.3.5
-
+      name: tk-3dsmax
   #
   # -------------------------------------------------
   # 3dsmax Plus
