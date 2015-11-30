@@ -70,6 +70,7 @@ engines:
       tk-multi-launchflameassist: '@launch_flame_assist'
       tk-multi-launchflamepremium: '@launch_flame_premium'
       tk-multi-launchhiero: '@launch_hiero'
+      tk-multi-launchhoudini: '@launch_houdini'
       tk-multi-launchmari: '@launch_mari'
       tk-multi-launchmaya: '@launch_maya'
       tk-multi-launchmotionbuilder: '@launch_motionbuilder'
@@ -234,6 +235,23 @@ engines:
       requires_selection: true}
   #
   # -------------------------------------------------
+  # Houdini
+  # -------------------------------------------------
+  tk-houdini:
+    apps:
+      tk-multi-about: '@about'
+      tk-multi-screeningroom: '@launch_screeningroom'
+      tk-multi-workfiles: '@workfiles-launch-at-startup'
+    location:
+      version: v1.0.0
+      type: app_store
+      name: tk-houdini
+    enable_sg_shelf: true
+    debug_logging: false
+    enable_sg_menu: true
+    menu_favourites: []
+  #
+  # -------------------------------------------------
   # Mari
   # -------------------------------------------------
   tk-mari:
@@ -355,6 +373,7 @@ engines:
     apps:
       tk-multi-launch3dsmax: '@launch_3dsmax'
       tk-multi-launchhiero: '@launch_hiero'
+      tk-multi-launchhoudini: '@launch_houdini'
       tk-multi-launchmari: '@launch_mari'
       tk-multi-launchmaya: '@launch_maya'
       tk-multi-launchmotionbuilder: '@launch_motionbuilder'
