@@ -64,6 +64,23 @@ engines:
     menu_favourites: []
   #
   # -------------------------------------------------
+  # Houdini
+  # -------------------------------------------------
+  tk-houdini:
+    apps:
+      tk-multi-about: '@about'
+      tk-multi-screeningroom: '@launch_screeningroom'
+      tk-multi-workfiles: '@workfiles-launch-at-startup'
+    location:
+      version: v1.0.0
+      type: app_store
+      name: tk-houdini
+    enable_sg_shelf: true
+    debug_logging: false
+    enable_sg_menu: true
+    menu_favourites: []
+  #
+  # -------------------------------------------------
   # Maya
   # -------------------------------------------------
   tk-maya:
@@ -132,6 +149,7 @@ engines:
     apps:
       tk-multi-launch3dsmax: '@launch_3dsmax'
       tk-multi-launchmaya: '@launch_maya'
+      tk-multi-launchhoudini: '@launch_houdini'
       tk-multi-launchmotionbuilder: '@launch_motionbuilder'
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchphotoshop: '@launch_photoshop'
