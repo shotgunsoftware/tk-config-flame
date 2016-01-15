@@ -32,7 +32,7 @@ std_flame_flare:
     #
     tk-flame-export:
       location:
-        version: v1.5.1
+        version: v1.6.0
         type: app_store
         name: tk-flame-export
       shot_parent_entity_type: Sequence
@@ -51,6 +51,8 @@ std_flame_flare:
         quicktime_template:
         batch_quicktime_template:
         batch_render_template: flame_shot_comp_dpx
+        start_frame: 100
+        frame_handles: 10
       - template: flame_shot_render_exr
         publish_type: Flame Render
         name: 16 bit OpenEXR
@@ -59,6 +61,8 @@ std_flame_flare:
         quicktime_template:
         batch_quicktime_template:
         batch_render_template: flame_shot_comp_exr
+        start_frame: 100
+        frame_handles: 10
       shot_clip_template: flame_shot_clip
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
