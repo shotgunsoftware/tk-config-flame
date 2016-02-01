@@ -161,7 +161,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.8.5
+          version: v0.8.6
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the selected Hiero project
@@ -351,7 +351,6 @@ engines:
     bin_context_menu: []
     spreadsheet_context_menu: []
     timeline_context_menu: []
-
   #
   # -------------------------------------------------
   # Nuke Studio
@@ -405,7 +404,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.8.5
+          version: v0.8.6
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the selected Hiero project
