@@ -155,7 +155,7 @@ launch_hiero:
     version: v0.7.2
     type: app_store
     name: tk-multi-launchapp
-  mac_args: --hiero
+  mac_args: ''
   mac_path: '@hiero_mac'
   menu_name: Launch Hiero
   versions: []

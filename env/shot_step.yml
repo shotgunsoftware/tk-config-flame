@@ -623,6 +623,7 @@ engines:
         action_mappings:
           Nuke Script: [script_import]
           Rendered Image: [read_node]
+          Alembic Cache: [read_node]
           Flame Render: [read_node]
           Flame Quicktime: [read_node]
         actions_hook: '{self}/tk-nuke_actions.py'
