@@ -55,7 +55,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.10.4
+          version: v1.10.5
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -113,7 +113,7 @@ engines:
         launch_at_startup: false
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -130,7 +130,7 @@ engines:
         version_compare_ignore_fields: []
     debug_logging: false
     location:
-      version: v0.3.6
+      version: v0.3.9
       type: app_store
       name: tk-3dsmax
   #
@@ -167,7 +167,7 @@ engines:
           publish_filters: []
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.10.4
+          version: v1.10.5
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -225,7 +225,7 @@ engines:
         launch_at_startup: false
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -243,7 +243,7 @@ engines:
     compatibility_dialog_min_version: 2017
     debug_logging: false
     location:
-      version: v0.1.9
+      version: v0.1.12
       type: app_store
       name: tk-3dsmaxplus
     menu_favourites: []
@@ -330,7 +330,7 @@ engines:
         launch_at_startup: false
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -347,7 +347,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.2.3
+          version: v1.2.4
           type: app_store
           name: tk-multi-shotgunpanel
         action_mappings:
@@ -364,10 +364,10 @@ engines:
         work_file_template: houdini_shot_work
         default_node_name: sg_alembic_out
         output_profiles:
-          - name: Shot Work Cache
-            settings: {}
-            color: []
-            output_cache_template: houdini_shot_work_alembic_cache
+        - name: Shot Work Cache
+          settings: {}
+          color: []
+          output_cache_template: houdini_shot_work_alembic_cache
       tk-houdini-mantranode:
         location:
           name: tk-houdini-mantranode
@@ -376,13 +376,13 @@ engines:
         work_file_template: houdini_shot_work
         default_node_name: sg_mantra_out
         output_profiles:
-          - name: Default Render
-            settings: {}
-            color: []
-            output_render_template: houdini_shot_render
-            output_ifd_template: houdini_shot_ifd
-            output_dcm_template: houdini_shot_dcm
-            output_extra_plane_template: houdini_shot_extra_plane
+        - name: Default Render
+          settings: {}
+          color: []
+          output_render_template: houdini_shot_render
+          output_ifd_template: houdini_shot_ifd
+          output_dcm_template: houdini_shot_dcm
+          output_extra_plane_template: houdini_shot_extra_plane
       tk-multi-loader2:
         action_mappings:
           Alembic Cache: [import]
@@ -407,9 +407,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          name: tk-multi-loader2
+          version: v1.10.5
           type: app_store
-          version: v1.10.4
+          name: tk-multi-loader2
         menu_name: Load
         publish_filters: []
         title_name: Loader
@@ -423,7 +423,7 @@ engines:
     enable_sg_shelf: true
     enable_sg_menu: true
     location:
-      version: v1.0.0
+      version: v1.0.1
       type: app_store
       name: tk-houdini
     menu_favourites:
@@ -470,7 +470,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.10.4
+          version: v1.10.5
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -524,7 +524,7 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py:{self}/tk-maya_actions.py'
         location:
-          version: v1.2.3
+          version: v1.2.4
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -548,7 +548,7 @@ engines:
         launch_at_startup: true
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -566,7 +566,7 @@ engines:
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
-      version: v0.5.4
+      version: v0.5.5
       type: app_store
       name: tk-maya
     menu_favourites:
@@ -608,7 +608,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.10.4
+          version: v1.10.5
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -666,7 +666,7 @@ engines:
         launch_at_startup: false
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -683,9 +683,9 @@ engines:
         version_compare_ignore_fields: []
     debug_logging: false
     location:
-      name: tk-motionbuilder
+      version: v0.3.1
       type: app_store
-      version: v0.3.0
+      name: tk-motionbuilder
     menu_favourites:
     - {app_instance: tk-multi-workfiles, name: Shotgun File Manager...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
@@ -734,7 +734,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.10.4
+          version: v1.10.5
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -828,7 +828,7 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py:{self}/tk-nuke_actions.py'
         location:
-          version: v1.2.3
+          version: v1.2.4
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -852,7 +852,7 @@ engines:
         launch_at_startup: false
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -923,7 +923,7 @@ engines:
     debug_logging: false
     favourite_directories: []
     location:
-      version: v0.5.4
+      version: v0.5.5
       type: app_store
       name: tk-nuke
     menu_favourites:
@@ -988,7 +988,7 @@ engines:
         launch_at_startup: false
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -1109,7 +1109,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.10.4
+          version: v1.10.5
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -1131,7 +1131,7 @@ engines:
     compatibility_dialog_min_version: 10
     debug_logging: false
     location:
-      version: v0.5.4
+      version: v0.5.5
       type: app_store
       name: tk-nuke
     menu_favourites:
@@ -1170,7 +1170,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.10.4
+          version: v1.10.5
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -1221,7 +1221,7 @@ engines:
         launch_at_startup: false
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -1238,10 +1238,9 @@ engines:
         version_compare_ignore_fields: []
     debug_logging: false
     location:
-      name: tk-photoshop
+      version: v0.3.3
       type: app_store
-      version: v0.3.2
-
+      name: tk-photoshop
   #
   # -------------------------------------------------
   # Shell (tank command)
@@ -1321,7 +1320,7 @@ engines:
         launch_at_startup: false
         launch_change_work_area_at_startup: false
         location:
-          version: v0.7.0
+          version: v0.7.1
           type: app_store
           name: tk-multi-workfiles
         saveas_default_name: scene
@@ -1338,9 +1337,9 @@ engines:
         version_compare_ignore_fields: []
     debug_logging: false
     location:
-      name: tk-softimage
+      version: v0.3.2
       type: app_store
-      version: v0.3.1
+      name: tk-softimage
     menu_favourites:
     - {app_instance: tk-multi-workfiles, name: Shotgun File Manager...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
