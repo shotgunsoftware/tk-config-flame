@@ -21,7 +21,10 @@ std_flame_flare:
     # Flame review app that sends a sequence to Shotgun Review
     #
     tk-flame-review:
-      location: {name: tk-flame-review, type: app_store, version: v1.0.5}
+      location:
+        version: v1.0.6
+        type: app_store
+        name: tk-flame-review
       task_template: ''
       shotgun_entity_type: Sequence
       menu_name: Submit for Shotgun review
@@ -32,7 +35,7 @@ std_flame_flare:
     #
     tk-flame-export:
       location:
-        version: v1.6.0
+        version: v1.6.1
         type: app_store
         name: tk-flame-export
       shot_parent_entity_type: Sequence
