@@ -74,7 +74,7 @@ std_flame_flare:
   #
   # Flame engine settings
   #
-  debug_logging: false
+  debug_logging: true
   location:
     version: v1.5.7
     type: app_store
