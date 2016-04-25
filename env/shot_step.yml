@@ -125,9 +125,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -247,9 +247,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -361,9 +361,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -588,9 +588,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -715,9 +715,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -910,9 +910,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -1049,9 +1049,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -1289,9 +1289,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -1397,9 +1397,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          name: tk-multi-workfiles2
+          version: v0.7.30
           type: app_store
-          version: v0.7.29
+          name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
