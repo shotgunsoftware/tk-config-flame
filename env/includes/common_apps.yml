@@ -63,7 +63,7 @@ workfiles2:
   hook_scene_operation: default
   launch_at_startup: false
   location:
-    version: v0.7.30
+    version: v0.7.31
     type: app_store
     name: tk-multi-workfiles2
   my_tasks_extra_display_fields: []
@@ -103,7 +103,7 @@ workfiles2-launch-at-startup:
   hook_scene_operation: default
   launch_at_startup: true
   location:
-    version: v0.7.30
+    version: v0.7.31
     type: app_store
     name: tk-multi-workfiles2
   my_tasks_extra_display_fields: []

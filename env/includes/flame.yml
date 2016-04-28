@@ -35,7 +35,7 @@ std_flame_flare:
     #
     tk-flame-export:
       location:
-        version: v1.7.1
+        version: v1.7.2
         type: app_store
         name: tk-flame-export
       shot_parent_entity_type: Sequence
