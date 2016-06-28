@@ -35,7 +35,7 @@ std_flame_flare:
     #
     tk-flame-export:
       location:
-        version: v1.7.2
+        version: v1.7.3
         type: app_store
         name: tk-flame-export
       shot_parent_entity_type: Sequence
@@ -78,7 +78,7 @@ std_flame_flare:
   #
   debug_logging: true
   location:
-    version: v1.5.9
+    version: v1.5.10
     type: app_store
     name: tk-flame
   project_startup_hook: '{self}/project_startup.py'
