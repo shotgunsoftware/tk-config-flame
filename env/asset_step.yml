@@ -255,7 +255,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -384,7 +384,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         action_mappings:
@@ -600,7 +600,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -723,7 +723,7 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py:{self}/tk-maya_actions.py'
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -892,7 +892,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -1039,7 +1039,7 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py:{self}/tk-nuke_actions.py'
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -1333,7 +1333,7 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py:{self}/tk-nuke_actions.py'
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -1467,7 +1467,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -1589,7 +1589,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'

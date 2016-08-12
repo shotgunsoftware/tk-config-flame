@@ -463,7 +463,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.2.6
+          version: v1.2.7
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
