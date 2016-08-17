@@ -74,7 +74,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the current 3ds Max scene
@@ -125,7 +125,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
@@ -196,7 +196,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the current 3ds Max scene
@@ -247,7 +247,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
@@ -308,7 +308,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the current scene
@@ -383,7 +383,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
@@ -550,7 +550,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the current Maya scene
@@ -621,7 +621,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
@@ -636,7 +636,7 @@ engines:
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
-      version: v0.5.10
+      version: v0.6.0
       type: app_store
       name: tk-maya
     menu_favourites:
@@ -697,7 +697,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the current work file
@@ -748,7 +748,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
@@ -854,7 +854,7 @@ engines:
         hook_secondary_publish: '{config}/multi_publish/nuke/secondary_publish.py'
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publishes and versions up the current Nuke script.
@@ -965,7 +965,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
@@ -981,7 +981,7 @@ engines:
         current_scene_template: nuke_shot_work
         height: 768
         location:
-          version: v0.3.2
+          version: v0.3.3
           type: app_store
           name: tk-nuke-quickdailies
         movie_template: shot_quicktime_quick
@@ -992,7 +992,7 @@ engines:
         codec_settings_hook: '{self}/codec_settings.py'
       tk-nuke-writenode:
         location:
-          version: v1.1.2
+          version: v1.1.6
           type: app_store
           name: tk-nuke-writenode
         template_script_work: nuke_shot_work
@@ -1033,7 +1033,7 @@ engines:
     debug_logging: false
     favourite_directories: []
     location:
-      version: v0.6.7
+      version: v0.6.9
       type: app_store
       name: tk-nuke
     menu_favourites:
@@ -1067,7 +1067,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the selected Hiero project
@@ -1104,7 +1104,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
@@ -1120,7 +1120,7 @@ engines:
         current_scene_template: nuke_shot_work
         height: 768
         location:
-          version: v0.3.2
+          version: v0.3.3
           type: app_store
           name: tk-nuke-quickdailies
         movie_template: shot_quicktime_quick
@@ -1131,7 +1131,7 @@ engines:
         codec_settings_hook: '{self}/codec_settings.py'
       tk-nuke-writenode:
         location:
-          version: v1.1.2
+          version: v1.1.6
           type: app_store
           name: tk-nuke-writenode
         template_script_work: nuke_shot_work
@@ -1263,7 +1263,7 @@ engines:
     compatibility_dialog_min_version: 10
     debug_logging: false
     location:
-      version: v0.6.7
+      version: v0.6.9
       type: app_store
       name: tk-nuke
     menu_favourites:
@@ -1321,7 +1321,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the current Photoshop scene
@@ -1365,7 +1365,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
@@ -1443,7 +1443,7 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.9.2
+          version: v0.9.4
           type: app_store
           name: tk-multi-publish
         primary_description: Publish and version up the current Softimage scene
@@ -1494,7 +1494,7 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          version: v0.7.37
+          version: v0.7.39
           type: app_store
           name: tk-multi-workfiles2
         my_tasks_extra_display_fields: []
