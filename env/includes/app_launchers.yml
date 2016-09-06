@@ -87,7 +87,7 @@ launch_flame_premium:
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
-  mac_path: '@flame_premium_mac'
+  mac_path: ''
   menu_name: Launch FlamePremium # note: desktop app means we cannot have spaces in app name
   versions: []
   windows_args: ''
