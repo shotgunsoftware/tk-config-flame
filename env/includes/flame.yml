@@ -22,7 +22,7 @@ std_flame_flare:
     #
     tk-flame-review:
       location:
-        version: v1.1.0
+        version: v1.1.1
         type: app_store
         name: tk-flame-review
       task_template: ''
@@ -35,7 +35,7 @@ std_flame_flare:
     #
     tk-flame-export:
       location:
-        version: v1.7.5
+        version: v1.7.6
         type: app_store
         name: tk-flame-export
       shot_parent_entity_type: Sequence
@@ -78,7 +78,7 @@ std_flame_flare:
   #
   debug_logging: true
   location:
-    version: v1.7.0
+    version: v1.7.2
     type: app_store
     name: tk-flame
   project_startup_hook: '{self}/project_startup.py'
