@@ -37,7 +37,7 @@ engines:
       tk-multi-launchflame: '@launch_flame'
       tk-multi-launchflare: '@launch_flare'
       tk-multi-launchflameassist: '@launch_flame_assist'
-      tk-multi-launchflamepremium: '@launch_flame_premium'
+      #tk-multi-launchflamepremium: '@launch_flame_premium'
       tk-multi-launchmaya: '@launch_maya'
       tk-multi-launchmotionbuilder: '@launch_motionbuilder'
       tk-multi-launchnuke: '@launch_nuke'
@@ -54,7 +54,7 @@ engines:
           version: v0.1.5
     debug_logging: false
     location:
-      version: v0.5.2
+      version: v0.6.0
       type: app_store
       name: tk-shotgun
 #
@@ -66,4 +66,4 @@ engines:
 # common functionality for building UIs and communicating with Shotgun.
 # Frameworks are automatically installed when apps are installed and udpated.
 #
-frameworks: null
+frameworks:
