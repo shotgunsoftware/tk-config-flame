@@ -46,7 +46,7 @@ engines:
     compatibility_dialog_min_version: 2017
     debug_logging: false
     location:
-      version: v0.2.0
+      version: v0.4.1
       type: app_store
       name: tk-3dsmaxplus
     menu_favourites: []
@@ -61,7 +61,7 @@ engines:
       tk-multi-screeningroom: '@launch_screeningroom'
       tk-multi-workfiles2: '@workfiles2'
     location:
-      version: v1.0.10
+      version: v1.2.7
       type: app_store
       name: tk-houdini
     enable_sg_shelf: true
@@ -81,7 +81,7 @@ engines:
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
-      version: v0.7.14
+      version: v0.8.3
       type: app_store
       name: tk-maya
     menu_favourites:
@@ -122,7 +122,7 @@ engines:
     debug_logging: false
     favourite_directories: []
     location:
-      version: v0.6.11
+      version: v0.8.5
       type: app_store
       name: tk-nuke
     menu_favourites:
@@ -170,13 +170,13 @@ engines:
       tk-multi-launchmotionbuilder: '@launch_motionbuilder'
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchflare: '@launch_flare'
-      tk-multi-launchflamepremium: '@launch_flame_premium'
+      #tk-multi-launchflamepremium: '@launch_flame_premium'
       tk-multi-launchflame: '@launch_flame'
       tk-multi-launchphotoshop: '@launch_photoshop'
       tk-multi-launchsoftimage: '@launch_softimage'
       tk-multi-screeningroom: '@launch_screeningroom'
     location:
-      version: v0.5.1
+      version: v0.5.4
       type: app_store
       name: tk-shell
   #

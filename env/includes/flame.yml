@@ -35,7 +35,7 @@ std_flame_flare:
     #
     tk-flame-export:
       location:
-        version: v1.7.6
+        version: v1.7.7
         type: app_store
         name: tk-flame-export
       shot_parent_entity_type: Sequence
@@ -72,13 +72,38 @@ std_flame_flare:
       segment_clip_template: flame_segment_clip
       batch_template: flame_shot_batch
       batch_publish_type: Flame Batch File
+    #
+    # Panel UI with Shotgun information about your scene, yourself and the things around you.
+    #
+    tk-multi-shotgunpanel:
+      location:
+        version: v1.4.8
+        type: app_store
+        name: tk-multi-shotgunpanel
+      shotgun_fields_hook: '{self}/shotgun_fields.py'
+      actions_hook: '{self}/general_actions.py'
+      action_mappings:
+        PublishedFile:
+        - actions:
+          - publish_clipboard
+          filters: {}
+        Task:
+        - actions:
+          - assign_task
+          - task_to_ip
+          filters: {}
+        Version:
+        - actions:
+          - quicktime_clipboard
+          - sequence_clipboard
+          filters: {}
 
   #
   # Flame engine settings
   #
   debug_logging: true
   location:
-    version: v1.9.3
+    version: v1.9.6
     type: app_store
     name: tk-flame
   project_startup_hook: '{self}/project_startup.py'
@@ -86,4 +111,15 @@ std_flame_flare:
   backburner_shared_tmp: /tmp
   run_at_startup: []
   backburner_manager: ''
-  context_menu: []
+  context_menu: [{name: Shotgun Panel..., app_instance: tk-multi-shotgunpanel, display_name: Shotgun Panel}]
+frameworks:
+  tk-framework-shotgunutils_v5.x.x:
+    location:
+      version: v5.2.3
+      type: app_store
+      name: tk-framework-shotgunutils
+  tk-framework-qtwidgets_v2.x.x:
+    location:
+      version: v2.6.5
+      type: app_store
+      name: tk-framework-qtwidgets

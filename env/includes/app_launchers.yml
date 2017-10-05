@@ -73,25 +73,25 @@ launch_flame:
 # -------------------------------------------------
 # Flame Premium
 # -------------------------------------------------
-launch_flame_premium:
-  defer_keyword: ''
-  engine: tk-flame
-  extra: {}
-  hook_app_launch: default
-  hook_before_app_launch: default
-  icon: '{target_engine}/flame_icon_256.png'
-  linux_args: ''
-  linux_path: '@flame_premium_linux'
-  location:
-    version: v0.8.0
-    type: app_store
-    name: tk-multi-launchapp
-  mac_args: ''
-  mac_path: ''
-  menu_name: Launch FlamePremium # note: desktop app means we cannot have spaces in app name
-  versions: []
-  windows_args: ''
-  windows_path: ''
+#launch_flame_premium:
+#  defer_keyword: ''
+#  engine: tk-flame
+#  extra: {}
+#  hook_app_launch: default
+#  hook_before_app_launch: default
+#  icon: '{target_engine}/flame_icon_256.png'
+#  linux_args: ''
+#  linux_path: '@flame_premium_linux'
+#  location:
+#    version: v0.8.0
+#    type: app_store
+#    name: tk-multi-launchapp
+#  mac_args: ''
+#  mac_path: ''
+#  menu_name: Launch FlamePremium # note: desktop app means we cannot have spaces in app name
+#  versions: []
+#  windows_args: ''
+#  windows_path: ''
 #
 # -------------------------------------------------
 # Flame Assist
@@ -360,3 +360,9 @@ launch_softimage:
   versions: []
   windows_args: ''
   windows_path: '@softimage_windows'
+frameworks:
+  tk-framework-shotgunutils_v5.x.x:
+    location:
+      version: v5.2.3
+      type: app_store
+      name: tk-framework-shotgunutils
