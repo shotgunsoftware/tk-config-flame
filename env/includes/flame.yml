@@ -36,7 +36,7 @@ std_flame_flare:
     #
     tk-flame-export:
       location:
-        version: v1.7.7
+        version: v1.7.9
         type: app_store
         name: tk-flame-export
       shot_parent_entity_type: Sequence
@@ -105,12 +105,14 @@ std_flame_flare:
   #
   debug_logging: true
   location:
-    version: v1.9.6
+    version: v1.9.9
     type: app_store
     name: tk-flame
   project_startup_hook: '{self}/project_startup.py'
   flame_batch_publish_type: Flame Batch File
   backburner_shared_tmp: /tmp
+  backburner_server_group: ''
+  backburner_servers: ''
   run_at_startup: []
   backburner_manager: ''
   context_menu: []
