@@ -90,8 +90,8 @@ hiero_linux: Nuke9.0
 #
 # Flame
 #
-flame_linux: /opt/Autodesk/flame_2018.2/bin/startApplication
-flame_mac: /opt/Autodesk/flame_2018.2/bin/startApplication
+flame_linux: /opt/Autodesk/flame_2018.3/bin/startApplication
+flame_mac: /opt/Autodesk/flame_2018.3/bin/startApplication
 
 #
 # Flame Premium
@@ -101,14 +101,14 @@ flame_mac: /opt/Autodesk/flame_2018.2/bin/startApplication
 #
 # Flame Assist
 #
-flame_assist_mac: /opt/Autodesk/flameassist_2018.2/bin/startApplication
-flame_assist_linux: /opt/Autodesk/flameassist_2018.2/bin/startApplication
+flame_assist_mac: /opt/Autodesk/flameassist_2018.3/bin/startApplication
+flame_assist_linux: /opt/Autodesk/flameassist_2018.3/bin/startApplication
 
 #
 # Flare
 #
-flare_mac: /opt/Autodesk/flare_2018.2/bin/startApplication
-flare_linux: /opt/Autodesk/flare_2018.2/bin/startApplication
+flare_mac: /opt/Autodesk/flare_2018.3/bin/startApplication
+flare_linux: /opt/Autodesk/flare_2018.3/bin/startApplication
 
 
 #
