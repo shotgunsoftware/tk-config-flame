@@ -747,7 +747,7 @@ engines:
         primary_tank_type: Nuke Script
         secondary_outputs:
         - description: Copy renders from work area to publish area.
-          display_group: Shotgun Write Nodes
+          display_group: ShotGrid Write Nodes
           display_name: Publish Renders
           icon: icons/publish_nuke_writenode.png
           name: render
@@ -757,7 +757,7 @@ engines:
           selected: true
           tank_type: Rendered Image
         - description: Create quicktime and send to Screening Room
-          display_group: Shotgun Write Nodes
+          display_group: ShotGrid Write Nodes
           display_name: Send to Screening Room
           icon: icons/publish_nuke_review.png
           name: quicktime
@@ -767,7 +767,7 @@ engines:
           selected: true
           tank_type: Quicktime
         - description: Make this publish available in Flame
-          display_group: Shotgun Write Nodes
+          display_group: ShotGrid Write Nodes
           display_name: Update Flame
           icon: icons/publish_nuke_flame.png
           name: flame
@@ -926,7 +926,7 @@ engines:
     bin_context_menu: []
     spreadsheet_context_menu: []
     timeline_context_menu: []
-    project_favourite_name: Shotgun Current Project
+    project_favourite_name: ShotGrid Current Project
     use_sgtk_as_menu_name: false
 
   #
@@ -1139,7 +1139,7 @@ engines:
       requires_selection: true}
     - {app_instance: tk-multi-publish, keep_in_menu: false, name: Publish Project...,
       requires_selection: true}
-    project_favourite_name: Shotgun Current Project
+    project_favourite_name: ShotGrid Current Project
     use_sgtk_as_menu_name: false
     favourite_directories: []
     compatibility_dialog_min_version: 10
@@ -1427,7 +1427,7 @@ engines:
 # Framework includes.
 #
 # Frameworks are libraries that are shared between apps and that contain
-# common functionality for building UIs and communicating with Shotgun.
+# common functionality for building UIs and communicating with ShotGrid.
 # Frameworks are automatically installed when apps are installed and udpated.
 #
 frameworks:

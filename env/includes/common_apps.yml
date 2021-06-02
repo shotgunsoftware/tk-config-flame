@@ -25,7 +25,7 @@ about:
     type: app_store
     name: tk-multi-about
 #
-# General Shotgun Panel configuration
+# General ShotGrid Panel configuration
 #
 shotgunpanel:
   location:
@@ -145,7 +145,7 @@ workfiles2-launch-at-startup:
 # Framework includes.
 #
 # Frameworks are libraries that are shared between apps and that contain
-# common functionality for building UIs and communicating with Shotgun.
+# common functionality for building UIs and communicating with ShotGrid.
 # Frameworks are automatically installed when apps are installed and udpated.
 #
 frameworks:

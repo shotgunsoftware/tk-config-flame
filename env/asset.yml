@@ -164,7 +164,7 @@ engines:
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    project_favourite_name: Shotgun Current Project
+    project_favourite_name: ShotGrid Current Project
     use_sgtk_as_menu_name: false
     bin_context_menu: []
     spreadsheet_context_menu: []
@@ -227,7 +227,7 @@ engines:
 # Framework includes.
 #
 # Frameworks are libraries that are shared between apps and that contain
-# common functionality for building UIs and communicating with Shotgun.
+# common functionality for building UIs and communicating with ShotGrid.
 # Frameworks are automatically installed when apps are installed and udpated.
 #
 frameworks:
