@@ -71,8 +71,8 @@ class PublishHook(Hook):
         :param thumbnail:               Path string
                                         The default thumbnail provided for the publish
 
-        :param sg_task:                 Dictionary (shotgun entity description)
-                                        The shotgun task to use for the publish
+        :param sg_task:                 Dictionary (ShotGrid entity description)
+                                        The ShotGrid task to use for the publish
 
         :param primary_publish_path:    Path string
                                         This is the path of the primary published file as returned
@@ -124,7 +124,7 @@ class PublishHook(Hook):
         if "render" in tasks_by_output or "quicktime" in tasks_by_output:
             # we will need the write node app if we have any render outputs to validate
             if not self.__write_node_app:
-                raise TankError("Unable to publish Shotgun Write Nodes without the tk-nuke-writenode app!")
+                raise TankError("Unable to publish ShotGrid Write Nodes without the tk-nuke-writenode app!")
 
         if "quicktime" in tasks_by_output:
             # If we have the tk-multi-reviewsubmission app we can create versions
@@ -132,7 +132,7 @@ class PublishHook(Hook):
                 raise TankError("Unable to publish Review Versions without the tk-multi-reviewsubmission app!")
 
 
-        # Keep of track of what has been published in shotgun
+        # Keep of track of what has been published in ShotGrid
         # this is needed as input into the review creation code...
         render_publishes = {}
 
@@ -149,7 +149,7 @@ class PublishHook(Hook):
                 progress_cb(0.0, "Publishing", task)
 
                 if output_name == "render":
-                    # Publish the rendered output for a Shotgun Write Node
+                    # Publish the rendered output for a ShotGrid Write Node
 
                     # each publish task is connected to a nuke write node
                     # this value was populated via the scan scene hook
@@ -172,7 +172,7 @@ class PublishHook(Hook):
                         errors.append("Publish failed - %s" % e)
 
                 elif output_name == "quicktime":
-                    # Publish the reviewable quicktime movie for a Shotgun Write Node
+                    # Publish the reviewable quicktime movie for a ShotGrid Write Node
 
                     # each publish task is connected to a nuke write node
                     # this value was populated via the scan scene hook
@@ -246,11 +246,11 @@ class PublishHook(Hook):
     def _send_to_screening_room(self, write_node, sg_publish, sg_task, comment, thumbnail_path, progress_cb):
         """
         Take a write node's published files and run them through the review_submission app
-        to get a movie and Shotgun Version.
+        to get a movie and ShotGrid Version.
 
-        :param write_node:      The Shotgun Write node to submit a review version for
-        :param sg_publish:      The Shotgun publish entity dictionary to link the version with
-        :param sg_task:         The Shotgun task entity dictionary for the publish
+        :param write_node:      The ShotGrid Write node to submit a review version for
+        :param sg_publish:      The ShotGrid publish entity dictionary to link the version with
+        :param sg_task:         The ShotGrid task entity dictionary for the publish
         :param comment:         The publish comment
         :param thumbnail_path:  The path to a thumbnail for the publish
         :param progress_cb:     A callback to use to report any progress
@@ -348,7 +348,7 @@ class PublishHook(Hook):
             except Exception, e:
                 raise TankError("Failed to copy file from %s to %s - %s" % (rf, target_path, e))
 
-        progress_cb(40, "Publishing to Shotgun")
+        progress_cb(40, "Publishing to ShotGrid")
 
         # use the render path to work out the publish 'file' and name:
         render_path_fields = render_template.get_fields(render_path)
@@ -601,7 +601,7 @@ class PublishHook(Hook):
 
         :param clip_path: path to the clip xml file to add the publish to
         :param write_node: current write node object
-        :param sg_publish: shotgun publish
+        :param sg_publish: ShotGrid publish
         :param progress_cb: progress callback
         """
 
