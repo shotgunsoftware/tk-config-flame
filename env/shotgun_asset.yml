@@ -9,7 +9,7 @@
 # not expressly granted therein are reserved by Shotgun Software Inc.
 #
 
-description: This environment controls what items should be shown on the menu in ShotGrid
+description: This environment controls what items should be shown on the menu in Flow Production Tracking
   for assets.
 
 #################################################################################################
@@ -22,9 +22,10 @@ includes:
 #################################################################################################
 # Define all the items that should appear in this environment
 #
-# Note! This environment is special and is only used by the ShotGrid action
-# menu integration. It can only contain a ShotGrid engine and the file name
-# reflects the entity type for which a menu will be generated in ShotGrid.
+# Note! This environment is special and is only used by the Flow Production
+# Tracking action menu integration. It can only contain a Flow Production
+# Tracking engine and the file name reflects the entity type for which a
+# menu will be generated in Flow Production Tracking.
 #
 engines:
   tk-shotgun:
@@ -63,7 +64,8 @@ engines:
 # Framework includes.
 #
 # Frameworks are libraries that are shared between apps and that contain
-# common functionality for building UIs and communicating with ShotGrid.
-# Frameworks are automatically installed when apps are installed and udpated.
+# common functionality for building UIs and communicating with Flow
+# Production Tracking. Frameworks are automatically installed when apps
+# are installed and udpated.
 #
 frameworks: null

@@ -11,6 +11,6 @@
 # the type of dynamic content
 type: "shotgun_step"
 
-# the ShotGrid field to use for the folder name
+# the Flow Production Tracking field to use for the folder name
 name: "short_name"
 

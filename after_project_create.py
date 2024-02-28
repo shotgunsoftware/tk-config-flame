@@ -10,14 +10,14 @@
 
 """
 The after_project_create file is executed as part of creating a new project.
-If your starter config needs to create any data in ShotGrid or do any other
-special configuration, you can add it to this file.
+If your starter config needs to create any data in Flow Production Tracking
+or do any other pecial configuration, you can add it to this file.
 
 The create() method will be executed as part of the setup and is passed
 the following keyword arguments:
 
-* sg -         A ShotGrid connection
-* project_id - The ShotGrid project id that is being setup
+* sg -         A Flow Production Tracking connection
+* project_id - The Flow Production Tracking project id that is being setup
 * log -        A logger instance to which progress can be reported via
                standard logger methods (info, warning, error etc)
 

@@ -9,15 +9,15 @@
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
 #
-# This file is one of the central points in the ShotGrid Pipeline Toolkit configuration and
-# a counterpart to the folder configuration structure.
+# This file is one of the central points in the Flow Production Tracking Toolkit
+# configuration and a counterpart to the folder configuration structure.
 #
 # The folder structure underneath the project folder is used to create folders on disk -
 # templates.yml (this file) refers to those folders. Therefore, the two files need to be
 # in sync. This file contains an overview of all locations that are used by Sgtk.
 #
 # Whenever an app or an engine refers to a location on disk, it is using an entry defined in
-# this file. For more information, see the ShotGrid Pipeline Toolkit Documentation.
+# this file. For more information, see the Flow Production Tracking Toolkit Documentation.
 
 
 
@@ -59,7 +59,7 @@ keys:
         type: str
 
 
-    # Represents the optional output name for frames written by the ShotGrid Write Node
+    # Represents the optional output name for frames written by the Flow Production Tracking Write Node
     nuke.output:
         alias: output
         type: str
@@ -134,8 +134,8 @@ keys:
 # This is because the default configuration stores all its production data in a single
 # tree and hence uses a single root folder on disk. If you wanted to extend the
 # configuration to span multiple root points, for example because you want to store
-# renders on a different server, you could define an additional root in ShotGrid, and
-# then switch any relevant templates to point to that one instead.
+# renders on a different server, you could define an additional root in Flow Production
+# Tracking, and then switch any relevant templates to point to that one instead.
 #
 
 paths:
@@ -631,7 +631,7 @@ paths:
     asset_publish_area_nuke:
         definition: '@asset_root/publish'
         root_name: 'primary'
-    # outputs from the ShotGrid Write Node for assets
+    # outputs from the Flow Production Tracking Write Node for assets
     nuke_asset_render:
         definition: '@asset_root/work/images/{name}/v{version}/{width}x{height}/{Asset}_{name}_{nuke.output}_v{version}.{SEQ}.exr'
         root_name: 'primary'
@@ -688,13 +688,13 @@ paths:
 #
 # The strings section is similar to the paths section - but rather than defining paths
 # on disk, it contains a list of strings. Strings are typically used when you want to be
-# able to configure the way data is written to ShotGrid - it may be the name field for a
-# review version or the formatting of a publish.
+# able to configure the way data is written to Flow Production Tracking - it may be the
+# name field for a review version or the formatting of a publish.
 #
 
 strings:
 
-    # when a review Version in ShotGrid is created inside of Nuke, this is the
+    # when a review Version in Flow Production Tracking is created inside of Nuke, this is the
     # name that is being given to it (the code field)
     nuke_shot_version_name: "{Shot}_{name}_{nuke.output}_v{version}.{iteration}"
     nuke_quick_shot_version_name: "{Shot}_{name}_quick_{iteration}"
