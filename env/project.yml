@@ -47,7 +47,7 @@ engines:
     menu_favourites: []
   #
   # -------------------------------------------------
-  # Desktop app
+  # FPTR desktop app
   # -------------------------------------------------
   tk-desktop:
     apps:
