@@ -47,7 +47,7 @@ engines:
     menu_favourites: []
   #
   # -------------------------------------------------
-  # ShotGrid Desktop
+  # FPTR desktop app
   # -------------------------------------------------
   tk-desktop:
     apps:
@@ -206,7 +206,7 @@ engines:
       requires_selection: true}
     - {app_instance: tk-multi-publish, keep_in_menu: false, name: Publish Project...,
       requires_selection: true}
-    project_favourite_name: ShotGrid Current Project
+    project_favourite_name: Flow Production Tracking Current Project
     use_sgtk_as_menu_name: false
     favourite_directories: []
     compatibility_dialog_min_version: 10
@@ -218,10 +218,10 @@ engines:
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
     spreadsheet_context_menu:
-    - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in ShotGrid,
+    - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in Flow Production Tracking,
       requires_selection: true}
     timeline_context_menu:
-    - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in ShotGrid,
+    - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in Flow Production Tracking,
       requires_selection: true}
   #
   # -------------------------------------------------
@@ -340,7 +340,7 @@ engines:
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    project_favourite_name: ShotGrid Current Project
+    project_favourite_name: Flow Production Tracking Current Project
     use_sgtk_as_menu_name: false
     bin_context_menu: []
     spreadsheet_context_menu: []
@@ -485,7 +485,7 @@ engines:
       requires_selection: true}
     - {app_instance: tk-multi-publish, keep_in_menu: false, name: Publish Project...,
       requires_selection: true}
-    project_favourite_name: ShotGrid Current Project
+    project_favourite_name: Flow Production Tracking Current Project
     use_sgtk_as_menu_name: false
     favourite_directories: []
     compatibility_dialog_min_version: 10
@@ -497,10 +497,10 @@ engines:
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
     spreadsheet_context_menu:
-    - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in ShotGrid,
+    - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in Flow Production Tracking,
       requires_selection: true}
     timeline_context_menu:
-    - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in ShotGrid,
+    - {app_instance: tk-hiero-openinshotgun, keep_in_menu: false, name: Open in Flow Production Tracking,
       requires_selection: true}
   #
   # -------------------------------------------------
@@ -566,8 +566,9 @@ engines:
 # Framework includes.
 #
 # Frameworks are libraries that are shared between apps and that contain
-# common functionality for building UIs and communicating with ShotGrid.
-# Frameworks are automatically installed when apps are installed and udpated.
+# common functionality for building UIs and communicating with Flow
+# Production Tracking. Frameworks are automatically installed when apps
+# are installed and udpated.
 #
 frameworks:
   tk-framework-adminui_v0.x.x:

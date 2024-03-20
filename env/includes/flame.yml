@@ -18,7 +18,7 @@
 std_flame_flare:
   apps:
     #
-    # Flame review app that sends a sequence to ShotGrid Review
+    # Flame review app that sends a sequence to Flow Production Tracking Review
     #
     tk-flame-review:
       location:
@@ -27,7 +27,7 @@ std_flame_flare:
         name: tk-flame-review
       task_template: ''
       shotgun_entity_type: Sequence
-      menu_name: Submit for ShotGrid review
+      menu_name: Submit for Flow Production Tracking review
       settings_hook: '{self}/settings.py'
 
     #
@@ -43,7 +43,7 @@ std_flame_flare:
       shot_parent_link_field: sg_sequence
       shot_parent_task_template: ''
       task_template: Basic shot template
-      menu_name: ShotGrid Shot Export
+      menu_name: Flow Production Tracking Shot Export
       settings_hook: '{self}/settings.py'
       bypass_shotgun_transcoding: false
       plate_presets:
@@ -75,7 +75,7 @@ std_flame_flare:
       batch_publish_type: Flame Batch File
 
     #
-    # Panel UI with ShotGrid information about your scene, yourself and the things around you.
+    # Panel UI with Flow Production Tracking information about your scene, yourself and the things around you.
     #
     tk-multi-shotgunpanel:
       location:

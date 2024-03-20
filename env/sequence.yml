@@ -129,7 +129,7 @@ engines:
     bin_context_menu: []
     spreadsheet_context_menu: []
     timeline_context_menu: []
-    project_favourite_name: ShotGrid Current Project
+    project_favourite_name: Flow Production Tracking Current Project
     use_sgtk_as_menu_name: false
 
   #
@@ -174,8 +174,9 @@ engines:
 # Framework includes.
 #
 # Frameworks are libraries that are shared between apps and that contain
-# common functionality for building UIs and communicating with ShotGrid.
-# Frameworks are automatically installed when apps are installed and udpated.
+# common functionality for building UIs and communicating with Flow
+# Production Tracking. Frameworks are automatically installed when apps
+# are installed and udpated.
 #
 frameworks:
   tk-framework-softimageqt_v1.0.1:
